@@ -6,8 +6,8 @@
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.Menu;
 
 /**
- *
  * @author Lyssandre Chrzaszcz
+ * @author ALexis Provost DA:1850986
  */
 public class Menu {
 
