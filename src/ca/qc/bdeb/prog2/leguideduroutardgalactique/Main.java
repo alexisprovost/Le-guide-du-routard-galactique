@@ -16,7 +16,10 @@ public class Main {
      */
     public static void main(String[] args) {
         System.out.println("YYYYYYYYYYOOOOOOOOOOOOOLLLLLLLLLLLOOOOOOOOOOOO");
-        System.out.println("fe agrsgcsrvchsch h");
+        String x = "fecgcwacg";
+        if(x == "vrthbvhs"){
+            System.out.println("ctafgthsvhcsgxrcew");
+        }
     }
     
 }
