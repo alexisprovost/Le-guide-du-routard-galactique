@@ -5,12 +5,14 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
+import java.io.Serializable;
+
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
  *
  */
-public class PlaneteNaine extends CorpsCeleste {
+public class PlaneteNaine extends CorpsCeleste implements Serializable {
 
     private String type;
 

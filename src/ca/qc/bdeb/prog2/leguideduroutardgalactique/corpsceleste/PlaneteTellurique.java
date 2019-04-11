@@ -5,6 +5,7 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class PlaneteTellurique extends CorpsCeleste {
+public class PlaneteTellurique extends CorpsCeleste implements Serializable {
 
     protected double distanceDeLaTerre, gravite, temperatureMax, temperatureMoy, temperatureMin, pointageCompatibilite;
     protected boolean presenceEau, presenceVie, atmosphereCompatible;
