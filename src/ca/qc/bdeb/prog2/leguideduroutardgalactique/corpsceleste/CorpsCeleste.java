@@ -5,8 +5,6 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author 1850986

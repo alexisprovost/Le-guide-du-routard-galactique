@@ -7,14 +7,14 @@ package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
 /**
  *
- * @author 1850986
+ * @author Lyssandre Chrzaszcz
  */
-public class Lune extends CorpsCeleste {
+public class PlaneteNaine extends CorpsCeleste {
 
-    private String planetesLiers;
+    private String type;
 
-    public Lune(int id, String nom, double rayon, String plaString) {
+    public PlaneteNaine(int id, String nom, double rayon, String type) {
         super(id, nom, rayon);
-        this.planetesLiers = planetesLiers;
+        this.type = type;
     }
 }

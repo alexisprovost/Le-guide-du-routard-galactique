@@ -9,6 +9,16 @@ package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
  *
  * @author 1850986
  */
-public class Etoile {
-    
+public class Etoile extends CorpsCeleste {
+
+    private String planetLier;
+    private int phase;
+    private double masse;
+
+    public Etoile(int id, String nom, double rayon, String planetLier, int phase, double masse) {
+        super(id, nom, rayon);
+        this.planetLier = planetLier;
+        this.phase = phase;
+        this.masse = masse;
+    }
 }
