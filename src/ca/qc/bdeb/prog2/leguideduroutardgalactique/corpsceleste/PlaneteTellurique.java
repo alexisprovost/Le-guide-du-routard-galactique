@@ -8,7 +8,9 @@ package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 import java.util.ArrayList;
 
 /**
- * @author 1850986
+ * @author Lyssandre Chrzaszcz DA: 1844687
+ * @author Alexis Provost DA: 1850986
+ *
  */
 public class PlaneteTellurique extends CorpsCeleste {
 

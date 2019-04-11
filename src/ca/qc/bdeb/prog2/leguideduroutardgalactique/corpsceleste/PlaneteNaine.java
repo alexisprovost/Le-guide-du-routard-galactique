@@ -6,8 +6,9 @@
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
 /**
+ * @author Lyssandre Chrzaszcz DA: 1844687
+ * @author Alexis Provost DA: 1850986
  *
- * @author Lyssandre Chrzaszcz
  */
 public class PlaneteNaine extends CorpsCeleste {
 
