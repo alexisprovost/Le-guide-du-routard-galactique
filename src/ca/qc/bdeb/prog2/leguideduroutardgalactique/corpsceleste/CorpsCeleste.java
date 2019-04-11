@@ -10,7 +10,7 @@ package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
  * @author Alexis Provost DA: 1850986
  *
  */
-public abstract class CorpsCeleste {
+public /*abstract*/ class CorpsCeleste {
 
     protected String nom;
     protected int id;
@@ -21,4 +21,9 @@ public abstract class CorpsCeleste {
         this.nom = nom;
         this.rayon = rayon;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
 }
