@@ -51,35 +51,20 @@ public class Menu {
     }
 
     public void consulterEncyclopedie() {
-
+        for (int i = 0; i < guide.size(); i++) {
+            System.out.println(guide.get(i));
+        }
     }
 
     public void trieEnOrdreCroissant() {
-        guide.add(1,new CorpsCeleste(1, "eabcd", 1));
-        guide.add(2,new CorpsCeleste(1, "deabc", 1));
-        guide.add(3,new CorpsCeleste(1, "cdeab", 1));
-        guide.add(4,new CorpsCeleste(1, "bcdea", 1));
-        guide.add(5,new CorpsCeleste(1, "abcde", 1));
-        for (int i = 0; i < guide.size(); i++) {
-            System.out.println(guide.get(i).getNom());
-        }
-        System.out.println("\n");
-        
-        
         for (int i = 1; i < guide.size(); i++) {
             CorpsCeleste valeur = guide.get(i);
             int position = i;
             while (position > 0 && guide.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
                 guide.set(position, guide.get(position - 1));
-                position --;
+                position--;
             }
-            guide.set(position, guide.get(i));
-        }
-        
-        
-        
-        for (int i = 0; i < guide.size(); i++) {
-            System.out.println(guide.get(i).getNom());
+            guide.set(position, valeur);
         }
     }
 

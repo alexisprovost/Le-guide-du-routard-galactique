@@ -25,5 +25,4 @@ public /*abstract*/ class CorpsCeleste {
     public String getNom() {
         return nom;
     }
-
 }

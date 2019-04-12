@@ -20,4 +20,11 @@ public class PlaneteNaine extends CorpsCeleste implements Serializable {
         super(id, nom, rayon);
         this.type = type;
     }
+
+    public void affichage() {
+        System.out.println("ID: " + id + "\n"
+                + "Nom: " + nom + "\n"
+                + "Rayon: " + rayon + "\n"
+                + "Type: " + type + "\n");
+    }
 }

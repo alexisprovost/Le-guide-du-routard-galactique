@@ -22,4 +22,13 @@ public class PlanetGazeuse extends CorpsCeleste implements Serializable {
         this.presenceVie = presenceVie;
         this.anneau = anneau;
     }
+
+    public void affichage() {
+        System.out.println("ID: " + id + "\n"
+                + "Nom: " + nom + "\n"
+                + "Rayon: " + rayon + "\n"
+                + "Presence de vie: " + presenceVie + "\n"
+                + "Atmosphere compatible: " + atmosphereCompatible + "\n"
+                + "Presence d'anneau(x):" + anneau + "\n");
+    }
 }

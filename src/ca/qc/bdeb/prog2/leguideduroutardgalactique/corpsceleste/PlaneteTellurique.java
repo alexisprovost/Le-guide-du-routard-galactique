@@ -31,4 +31,18 @@ public class PlaneteTellurique extends CorpsCeleste implements Serializable {
         this.distanceDeLaTerre = distanceDeLaTerre;
         this.pointageCompatibilite = pointageCompatibilite;
     }
+
+    public void affichage() {
+        System.out.println("ID: " + id + "\n"
+                + "Nom: " + nom + "\n"
+                + "Rayon: " + rayon + "\n"
+                + "Distance de la Terre: " + distanceDeLaTerre + "\n"
+                + "Presence d'eau: " + presenceEau + "\n"
+                + "Presence de vie: " + presenceVie + "\n"
+                + "Gravite: " + gravite + "\n"
+                + "Atmosphere compatible: " + atmosphereCompatible + "\n"
+                + "Temperature: " + temperatureMin + "°C a" + temperatureMax + "°C, " + temperatureMoy + "°C en moyenne\n"
+                // en constrution         + "Lune(s) associees: " + +"\n"
+                + "Pointage de compatibilite: " + pointageCompatibilite);
+    }
 }
