@@ -5,6 +5,9 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique;
 
+import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.CorpsCeleste;
+import java.util.ArrayList;
+
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
@@ -16,7 +19,13 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        ArrayList<CorpsCeleste> encyclopedie = new ArrayList<>();
+        
         Menu menu = new Menu();
-        menu.trieEnOrdreCroissant();
+        Fichier fichier = new Fichier(encyclopedie);
+
+        fichier.ouvertureTransfert();
+        
+        menu.showMenu();
     }
 }
