@@ -12,24 +12,19 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class Etoile extends CorpsCeleste implements Serializable {
+public class PlaneteNaine extends CorpsCeleste implements Serializable {
 
-    private String planetesLier;
-    private int phase;
-    private double masse;
+    private String type;
 
-    public Etoile(int id, String nom, double rayon, String planetesLier, int phase, double masse) {
+    public PlaneteNaine(int id, String nom, double rayon, String type) {
         super(id, nom, rayon);
-        this.planetesLier = planetesLier;
-        this.phase = phase;
-        this.masse = masse;
+        this.type = type;
     }
 
     public void affichage() {
         System.out.println("ID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
-                + "Phase: " + phase + "\n"
-                + "Masse: " + masse + "\n");
+                + "Type: " + type + "\n");
     }
 }

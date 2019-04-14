@@ -6,9 +6,10 @@
 package ca.qc.bdeb.prog2.leguideduroutardgalactique;
 
 /**
+ * @author Lyssandre Chrzaszcz DA: 1844687
+ * @author Alexis Provost DA: 1850986
  *
- * @author 1850986
  */
 public class Trie {
-    
+
 }

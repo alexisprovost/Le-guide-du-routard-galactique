@@ -5,11 +5,10 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique;
 
-import ca.qc.bdeb.prog2.leguideduroutardgalactique.Menu;
-
 /**
+ * @author Lyssandre Chrzaszcz DA: 1844687
+ * @author Alexis Provost DA: 1850986
  *
- * @author 1850986
  */
 public class Main {
 
@@ -17,11 +16,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Menu menu = new Menu();
-         
-         while(true){
-             menu.menu();
-         }
+        Menu menu = new Menu();
+        menu.trieEnOrdreCroissant();
     }
-    
 }
