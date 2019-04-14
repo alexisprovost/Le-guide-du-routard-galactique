@@ -12,24 +12,23 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class Etoile extends CorpsCeleste implements Serializable {
+public class PlanetGazeuse extends CorpsCeleste implements Serializable {
 
-    private String planetesLier;
-    private int phase;
-    private double masse;
+    private boolean atmosphereCompatible, presenceVie, anneau;
 
-    public Etoile(int id, String nom, double rayon, String planetesLier, int phase, double masse) {
+    public PlanetGazeuse(int id, String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean anneau) {
         super(id, nom, rayon);
-        this.planetesLier = planetesLier;
-        this.phase = phase;
-        this.masse = masse;
+        this.atmosphereCompatible = atmosphereCompatible;
+        this.presenceVie = presenceVie;
+        this.anneau = anneau;
     }
 
     public void affichage() {
         System.out.println("ID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
-                + "Phase: " + phase + "\n"
-                + "Masse: " + masse + "\n");
+                + "Presence de vie: " + presenceVie + "\n"
+                + "Atmosphere compatible: " + atmosphereCompatible + "\n"
+                + "Presence d'anneau(x):" + anneau + "\n");
     }
 }
