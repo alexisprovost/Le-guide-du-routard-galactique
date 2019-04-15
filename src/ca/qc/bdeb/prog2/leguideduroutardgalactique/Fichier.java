@@ -99,7 +99,17 @@ public class Fichier implements java.io.Serializable {
                             }
 
                             try {
-                                encyclopedie.add(new PlaneteTellurique(count, array[0], Double.parseDouble(array[1]), Boolean.parseBoolean(array[5]), Boolean.parseBoolean(array[2]), Boolean.parseBoolean(array[3]), Double.parseDouble(array[4]), Double.parseDouble(array[8]), Double.parseDouble(array[6]), Double.parseDouble(array[7]), Double.parseDouble(array[17])));
+                                encyclopedie.add(new PlaneteTellurique(count, array[0],
+                                        Double.parseDouble(array[1]),
+                                        Boolean.parseBoolean(array[5]),
+                                        Boolean.parseBoolean(array[2]),
+                                        Boolean.parseBoolean(array[3]),
+                                        Double.parseDouble(array[4]),
+                                        Double.parseDouble(array[8]),
+                                        Double.parseDouble(array[6]),
+                                        Double.parseDouble(array[7]),
+                                        Double.parseDouble(array[17])
+                                ));
                             } catch (Exception e) {
 
                             }
