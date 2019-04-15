@@ -19,8 +19,8 @@ public class PlaneteTellurique extends CorpsCeleste implements Serializable {
     protected boolean presenceEau, presenceVie, atmosphereCompatible;
     protected ArrayList<CorpsCeleste> lune = null;
 
-    public PlaneteTellurique(int id, String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean presenceEau, double gravite, double temperatureMin, double temperatureMax, double temperatureMoy, double pointageCompatibilite) {
-        super(id, nom, rayon);
+    public PlaneteTellurique(int id, String typeDObject,String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean presenceEau, double gravite, double temperatureMin, double temperatureMax, double temperatureMoy, double pointageCompatibilite) {
+        super(id, typeDObject,nom, rayon);
         this.atmosphereCompatible = atmosphereCompatible;
         this.presenceVie = presenceVie;
         this.presenceEau = presenceEau;
