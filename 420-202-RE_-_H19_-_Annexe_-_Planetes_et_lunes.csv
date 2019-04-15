@@ -1,7 +1,7 @@
 ;Rayon (km);Vie;Eau;Gravité (g);Atmosphčre compatible;Température maximale (C);Température moyenne (C);Température minimale (C);Satellites;Facteur taille;Présence d'eau;Facteur gravité;Atmosphčre respirable;Facteur trop chaud;Facteur température moyenne;Facteur trop froid;Potentiel de colonisation par des tatas;;;;;
 Terre;6378,14;oui;oui;1,00;oui;56,70;15,00;-93,20;Lune
 Mercure;2439,70;non;non;0,38;non;427,00;442,00;-183,00;;-6,17%;-10,00%;-12,46%;-10,00%;-37,03%;-42,70%;-8,98%;-127,34%
-Venus;6051,80;non;non;0,91;non;490,00;462,00;446,00;;-0,51%;-10,00%;-1,90%;-10,00%;-43,33%;-44,70%;0,00%;-110,44%;;;;;
+Venus;6051,80;non;non;0,91;non;490,00;462,00;446,00;;-0,51%;-10,00%;-1,90%;-10,00%;-43,33%;-44,70%;0,00%;-110,44%
 Mars;3396,20;non;oui;0,38;non;20,00;-63,00;-143,00;Phobos, Deimos;-4,68%;0,00%;-12,42%;-10,00%;0,00%;-7,80%;-4,98%;-39,88%
 Eta Vulpeculae II;5995,45;non;oui;0,97;oui;45,00;28,00;-47,00;Eta Vulpeculae II-A;-0,60%;0,00%;-0,60%;0,00%;0,00%;-1,30%;0,00%;-2,50%
 Procyon II;4783,60;oui;non;0,63;non;216,00;-211,00;-229,00;;-2,50%;-10,00%;-7,40%;-10,00%;-15,93%;-22,60%;-13,58%;-82,01%
