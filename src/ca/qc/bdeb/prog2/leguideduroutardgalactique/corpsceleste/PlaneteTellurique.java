@@ -19,8 +19,8 @@ public class PlaneteTellurique extends CorpsCeleste implements Serializable {
     protected boolean presenceEau, presenceVie, atmosphereCompatible;
     protected ArrayList<CorpsCeleste> lune = null;
 
-    public PlaneteTellurique(int id, String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean presenceEau, double gravite, double temperatureMin, double temperatureMax, double temperatureMoy, double distanceDeLaTerre, double pointageCompatibilite) {
-        super(id, nom, rayon);
+    public PlaneteTellurique(int id, String typeDObject, String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean presenceEau, double gravite, double temperatureMin, double temperatureMax, double temperatureMoy, double distanceDeLaTerre, double pointageCompatibilite) {
+        super(id, typeDObject, nom, rayon);
         this.atmosphereCompatible = atmosphereCompatible;
         this.presenceVie = presenceVie;
         this.presenceEau = presenceEau;
@@ -32,17 +32,8 @@ public class PlaneteTellurique extends CorpsCeleste implements Serializable {
         this.pointageCompatibilite = pointageCompatibilite;
     }
 
-    public void affichage() {
-        System.out.println("ID: " + id + "\n"
-                + "Nom: " + nom + "\n"
-                + "Rayon: " + rayon + "\n"
-                + "Distance de la Terre: " + distanceDeLaTerre + "\n"
-                + "Presence d'eau: " + presenceEau + "\n"
-                + "Presence de vie: " + presenceVie + "\n"
-                + "Gravite: " + gravite + "\n"
-                + "Atmosphere compatible: " + atmosphereCompatible + "\n"
-                + "Temperature: " + temperatureMin + "°C a" + temperatureMax + "°C, " + temperatureMoy + "°C en moyenne\n"
-                // en constrution         + "Lune(s) associees: " + +"\n"
-                + "Pointage de compatibilite: " + pointageCompatibilite);
+    public double getGravite() {
+        return gravite;
     }
+
 }
