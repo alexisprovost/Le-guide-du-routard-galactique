@@ -14,10 +14,24 @@ import java.io.Serializable;
  */
 public class PlaneteNaine extends CorpsCeleste implements Serializable {
 
-    private String type;
+    private Sorte typeDeNaine;
 
-    public PlaneteNaine(int id, String typeDObject, String nom, double rayon, String type) {
-        super(id, typeDObject, nom, rayon);
-        this.type = type;
+    private enum Sorte {
+        ASTEROIDE,
+        EPARS,
+        CUBEWANO,
+        AUTRE
+    }
+
+    public PlaneteNaine(int id, String nom, double rayon, Sorte typeDeNaine) {
+        super(id, nom, rayon);
+        this.typeDeNaine = typeDeNaine;
+    }
+
+    public void affichage() {
+        System.out.println("ID: " + id + "\n"
+                + "Nom: " + nom + "\n"
+                + "Rayon: " + rayon + "\n"
+                + "Type de Naine: " + typeDeNaine + "\n");
     }
 }

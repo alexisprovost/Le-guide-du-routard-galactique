@@ -17,7 +17,11 @@ import java.util.Scanner;
 public class Menu {
 
     private Scanner sc = new Scanner(System.in);
-    private ArrayList<CorpsCeleste> guide = new ArrayList();
+    private ArrayList<CorpsCeleste> encyclopedie = new ArrayList();
+
+    public Menu(ArrayList<CorpsCeleste> encyclopedie) {
+        this.encyclopedie = encyclopedie;
+    }
 
     public void showMenu() {
         while (true) {
@@ -51,20 +55,20 @@ public class Menu {
     }
 
     public void consulterEncyclopedie() {
-        for (int i = 0; i < guide.size(); i++) {
-            System.out.println(guide.get(i));
+        for (int i = 0; i < encyclopedie.size(); i++) {
+            System.out.println(encyclopedie.get(i));
         }
     }
 
     public void trieEnOrdreCroissant() {
-        for (int i = 1; i < guide.size(); i++) {
-            CorpsCeleste valeur = guide.get(i);
+        for (int i = 1; i < encyclopedie.size(); i++) {
+            CorpsCeleste valeur = encyclopedie.get(i);
             int position = i;
-            while (position > 0 && guide.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
-                guide.set(position, guide.get(position - 1));
+            while (position > 0 && encyclopedie.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
+                encyclopedie.set(position, encyclopedie.get(position - 1));
                 position--;
             }
-            guide.set(position, valeur);
+            encyclopedie.set(position, valeur);
         }
     }
 
