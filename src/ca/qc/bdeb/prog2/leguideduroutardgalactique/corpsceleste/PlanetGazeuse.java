@@ -16,19 +16,10 @@ public class PlanetGazeuse extends CorpsCeleste implements Serializable {
 
     private boolean atmosphereCompatible, presenceVie, anneau;
 
-    public PlanetGazeuse(int id, String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean anneau) {
-        super(id, nom, rayon);
+    public PlanetGazeuse(int id, String typeDObject, String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean anneau) {
+        super(id, typeDObject, nom, rayon);
         this.atmosphereCompatible = atmosphereCompatible;
         this.presenceVie = presenceVie;
         this.anneau = anneau;
-    }
-
-    public void affichage() {
-        System.out.println("ID: " + id + "\n"
-                + "Nom: " + nom + "\n"
-                + "Rayon: " + rayon + "\n"
-                + "Presence de vie: " + presenceVie + "\n"
-                + "Atmosphere compatible: " + atmosphereCompatible + "\n"
-                + "Presence d'anneau(x):" + anneau + "\n");
     }
 }

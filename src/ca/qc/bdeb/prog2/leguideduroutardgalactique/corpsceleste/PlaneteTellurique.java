@@ -43,4 +43,5 @@ public class PlaneteTellurique extends CorpsCeleste implements Serializable {
                 // en constrution         + "Lune(s) associees: " + +"\n"
                 + "Pointage de compatibilite: " + pointageCompatibilite);
     }
+
 }
