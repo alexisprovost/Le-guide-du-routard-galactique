@@ -28,6 +28,7 @@ public class PlaneteNaine extends CorpsCeleste implements Serializable {
         this.typeDeNaine = typeDeNaine;
     }
 
+    @Override
     public void affichage() {
         System.out.println("ID: " + id + "\n"
                 + "Nom: " + nom + "\n"

@@ -21,7 +21,8 @@ public class Lune extends CorpsCeleste implements Serializable {
         this.planeteLier = planeteLier;
     }
 
-    public void affichageLune() {
+    @Override
+    public void affichage() {
         System.out.println("ID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"

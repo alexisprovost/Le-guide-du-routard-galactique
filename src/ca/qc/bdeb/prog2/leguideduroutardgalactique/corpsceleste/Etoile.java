@@ -25,7 +25,8 @@ public class Etoile extends CorpsCeleste implements Serializable {
         this.masse = masse;
     }
 
-    public void affichageEtoile() {
+    @Override
+    public void affichage() {
         System.out.println("ID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"

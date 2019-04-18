@@ -6,8 +6,10 @@
 package ca.qc.bdeb.prog2.leguideduroutardgalactique;
 
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.CorpsCeleste;
+import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.PlaneteTellurique;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
@@ -16,7 +18,6 @@ import java.util.Scanner;
  */
 // jaaaiimme
 // Jaime ta grand-mere
-
 public class Menu {
 
     private Scanner sc = new Scanner(System.in);
@@ -58,9 +59,9 @@ public class Menu {
     }
 
     public void consulterEncyclopedie() {
-        for (int i = 0; i < encyclopedie.size(); i++) {
-            System.out.println(encyclopedie.get(i));
-        }
+        trieEnOrdreCroissant();
+        trieEnOrdreDecroissant();
+//        triePourTellurique();
     }
 
     public void trieEnOrdreCroissant() {
@@ -73,9 +74,35 @@ public class Menu {
             }
             encyclopedie.set(position, valeur);
         }
+        for (int i = 0; i < encyclopedie.size(); i++) {
+            encyclopedie.get(i).affichage();
+            System.out.println("\n");
+        }
+    }
+
+    public void trieEnOrdreDecroissant() {
+        Stack<CorpsCeleste> stack = new Stack();
+        for (int i = 0; i < encyclopedie.size(); i++) {
+            stack.push(encyclopedie.get(i));
+        }
+        for (int i = 0; i < encyclopedie.size(); i++) {
+            stack.pop().affichage();
+            System.out.println("\n");
+        }
+    }
+
+    public void triePourTellurique() {
+        for (int i = 0; i < encyclopedie.size(); i++) {
+            if (encyclopedie.get(i) instanceof PlaneteTellurique) {
+                encyclopedie.get(i).affichage();
+                System.out.println("\n");
+            }
+        }
     }
 
     public void nouveuaCorpsCeleste() {
+        System.out.println("Bienvenue dans la partie d'ajout de Corps Celeste"
+                + "veille");
     }
 
     public void modifierCorpsCeleste() {
