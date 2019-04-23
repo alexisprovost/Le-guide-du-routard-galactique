@@ -20,12 +20,14 @@ public class Main {
      */
     public static void main(String[] args) {
         ArrayList<CorpsCeleste> encyclopedie = new ArrayList<>();
-        
-        Menu menu = new Menu();
-        Fichier fichier = new Fichier(encyclopedie);
-
-        fichier.ouvertureTransfert();
-        
+        Menu menu = new Menu(encyclopedie);
         menu.showMenu();
     }
 }
+
+/*
+
+To do:
+    point ou virgule dans gestion double
+
+ */

@@ -12,13 +12,15 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class Lune extends CorpsCeleste implements Serializable {
+public class PlaneteGazeuse extends CorpsCeleste implements Serializable {
 
-    private String planeteLier;
+    private boolean atmosphereCompatible, presenceVie, anneau;
 
-    public Lune(String nom, double rayon, String planeteLier) {
+    public PlaneteGazeuse(String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean anneau) {
         super(nom, rayon);
-        this.planeteLier = planeteLier;
+        this.atmosphereCompatible = atmosphereCompatible;
+        this.presenceVie = presenceVie;
+        this.anneau = anneau;
     }
 
     @Override
@@ -26,6 +28,8 @@ public class Lune extends CorpsCeleste implements Serializable {
         System.out.println("ID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
-                + "Planete lier: " + planeteLier);
+                + "Presence de vie: " + presenceVie + "\n"
+                + "Atmosphere compatible: " + atmosphereCompatible + "\n"
+                + "Presence d'anneau(x):" + anneau + "\n");
     }
 }
