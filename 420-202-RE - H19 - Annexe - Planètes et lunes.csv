@@ -1,5 +1,5 @@
-;Rayon (km);Vie;Eau;Gravité (g);Atmosphère compatible;Température maximale (C);Température moyenne (C);Température minimale (C);Satellites;Facteur taille;Présence d'eau;Facteur gravité;Atmosphère respirable;Facteur trop chaud;Facteur température moyenne;Facteur trop froid;Potentiel de colonisation par des tatas;;;;;
-Terre;6378,14;oui;oui;1,00;oui;56,70;15,00;-93,20;Lune;;;;;;;;;;;;;
+;Rayon (km);Vie;Eau;GravitÃ© (g);AtmosphÄre compatible;TempÃ©rature maximale (C);TempÃ©rature moyenne (C);TempÃ©rature minimale (C);Satellites;Facteur taille;PrÃ©sence d'eau;Facteur gravitÃ©;AtmosphÄre respirable;Facteur trop chaud;Facteur tempÃ©rature moyenne;Facteur trop froid;Potentiel de colonisation par des tatas;;;;;
+Terre;6378,14;oui;oui;1,00;oui;56,70;15,00;-93,20;Lune;0,00%;0,00%;0,00%;0,00%;0,00%;0,00%;0,00%;100%;;;;;
 Mercure;2439,70;non;non;0,38;non;427,00;442,00;-183,00;;-6,17%;-10,00%;-12,46%;-10,00%;-37,03%;-42,70%;-8,98%;-127,34%;;;;;
 Venus;6051,80;non;non;0,91;non;490,00;462,00;446,00;;-0,51%;-10,00%;-1,90%;-10,00%;-43,33%;-44,70%;0,00%;-110,44%;;;;;
 Mars;3396,20;non;oui;0,38;non;20,00;-63,00;-143,00;Phobos, Deimos;-4,68%;0,00%;-12,42%;-10,00%;0,00%;-7,80%;-4,98%;-39,88%;;;;;
