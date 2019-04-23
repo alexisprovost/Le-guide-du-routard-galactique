@@ -16,12 +16,13 @@ public class Lune extends CorpsCeleste implements Serializable {
 
     private String planeteLier;
 
-    public Lune(int id, String nom, double rayon, String planeteLier) {
-        super(id, nom, rayon);
+    public Lune(String nom, double rayon, String planeteLier) {
+        super(nom, rayon);
         this.planeteLier = planeteLier;
     }
 
-    public void affichageLune() {
+    @Override
+    public void affichage() {
         System.out.println("ID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"

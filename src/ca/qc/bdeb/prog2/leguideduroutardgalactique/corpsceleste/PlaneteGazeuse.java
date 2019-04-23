@@ -12,18 +12,19 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class PlanetGazeuse extends CorpsCeleste implements Serializable {
+public class PlaneteGazeuse extends CorpsCeleste implements Serializable {
 
     private boolean atmosphereCompatible, presenceVie, anneau;
 
-    public PlanetGazeuse(int id, String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean anneau) {
-        super(id, nom, rayon);
+    public PlaneteGazeuse(String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean anneau) {
+        super(nom, rayon);
         this.atmosphereCompatible = atmosphereCompatible;
         this.presenceVie = presenceVie;
         this.anneau = anneau;
     }
 
-    public void affichageGazeuse() {
+    @Override
+    public void affichage() {
         System.out.println("ID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"

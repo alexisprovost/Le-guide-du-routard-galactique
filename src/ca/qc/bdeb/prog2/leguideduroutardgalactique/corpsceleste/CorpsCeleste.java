@@ -5,8 +5,6 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
-import java.util.ArrayList;
-
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
@@ -14,17 +12,22 @@ import java.util.ArrayList;
  */
 public abstract class CorpsCeleste {
 
+    private static int idSequentiel = 1;
+
     protected String nom;
     protected int id;
     protected double rayon;
 
-    public CorpsCeleste(int id, String nom, double rayon) {
-        this.id = id;
+    public CorpsCeleste(String nom, double rayon) {
+        this.id = idSequentiel++;
         this.nom = nom;
         this.rayon = rayon;
     }
 
     public String getNom() {
         return nom;
+    }
+
+    public void affichage() {
     }
 }
