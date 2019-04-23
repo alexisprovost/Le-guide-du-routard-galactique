@@ -23,8 +23,8 @@ public class PlaneteNaine extends CorpsCeleste implements Serializable {
         AUTRE
     }
 
-    public PlaneteNaine(int id, String nom, double rayon, Sorte typeDeNaine) {
-        super(id, nom, rayon);
+    public PlaneteNaine(String nom, double rayon, Sorte typeDeNaine) {
+        super(nom, rayon);
         this.typeDeNaine = typeDeNaine;
     }
 

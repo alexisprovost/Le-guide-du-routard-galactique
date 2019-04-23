@@ -16,7 +16,6 @@ import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
@@ -54,19 +53,10 @@ public class Fichier implements java.io.Serializable {
                 String file = "420-202-RE - H19 - Annexe - Planètes et lunes.csv";
                 try (BufferedReader bufferedreader = new BufferedReader(new FileReader(file))) {
                     String ligne = "";
-//bufferedreader.readLine();
                     while ((ligne = bufferedreader.readLine()) != null) {
                         String[] array = ligne.split(";");
-                        System.out.println(ligne);
                         //Saute les descriptions de valeurs
                         if (count != 0) {
-                            for (String info : array) {
-                                System.out.println(info);
-                            }
-
-                            System.out.println(array[0]);
-                            System.out.println(array[1]);
-
                             //Replace commas with points
                             array[1] = array[1].replace(',', '.');
                             array[4] = array[4].replace(',', '.');
@@ -92,21 +82,20 @@ public class Fichier implements java.io.Serializable {
                             } else if (array[3] == "non") {
                                 array[3] = "false";
                             }
-//                            try {
-                            encyclopedie.add(new PlaneteTellurique(array[0],
-                                    Double.parseDouble(array[1]),
-                                    Boolean.parseBoolean(array[5]),
-                                    Boolean.parseBoolean(array[2]),
-                                    Boolean.parseBoolean(array[3]),
-                                    Double.parseDouble(array[4]),
-                                    Double.parseDouble(array[8]),
-                                    Double.parseDouble(array[6]),
-                                    Double.parseDouble(array[7]),
-                                    Double.parseDouble(array[17])
-                            ));
-//                             catch (Exception e) {
-//                                System.out.println(e.getStackTrace().toString());
-//                            }
+                            try {
+                                encyclopedie.add(new PlaneteTellurique(array[0],
+                                        Double.parseDouble(array[1]),
+                                        Boolean.parseBoolean(array[5]),
+                                        Boolean.parseBoolean(array[2]),
+                                        Boolean.parseBoolean(array[3]),
+                                        Double.parseDouble(array[4]),
+                                        Double.parseDouble(array[8]),
+                                        Double.parseDouble(array[6]),
+                                        Double.parseDouble(array[7]),
+                                        Double.parseDouble(array[17])));
+                            } catch (NumberFormatException e) {
+                                System.out.println(e);
+                            }
                         }
                         count++;
                     }
@@ -115,10 +104,9 @@ public class Fichier implements java.io.Serializable {
                 }
             } catch (IOException e) {
                 System.out.println(e);
-//            } catch (Exception e) {
-//                //Erreur inconnue
-//                System.out.println(e.getCause());
-//                System.out.println(e);
+            } catch (Exception e) {
+                //Erreur inconnue
+                System.out.println(e);
             }
         }
 

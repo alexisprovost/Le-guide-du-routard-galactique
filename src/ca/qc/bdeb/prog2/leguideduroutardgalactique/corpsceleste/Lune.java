@@ -16,8 +16,8 @@ public class Lune extends CorpsCeleste implements Serializable {
 
     private String planeteLier;
 
-    public Lune(int id, String nom, double rayon, String planeteLier) {
-        super(id, nom, rayon);
+    public Lune(String nom, double rayon, String planeteLier) {
+        super(nom, rayon);
         this.planeteLier = planeteLier;
     }
 

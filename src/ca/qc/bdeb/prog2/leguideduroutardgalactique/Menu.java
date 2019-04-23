@@ -61,7 +61,7 @@ public class Menu {
     public void consulterEncyclopedie() {
         trieEnOrdreCroissant();
         trieEnOrdreDecroissant();
-//        triePourTellurique();
+        triePourTellurique();
     }
 
     public void trieEnOrdreCroissant() {
@@ -101,8 +101,13 @@ public class Menu {
     }
 
     public void nouveuaCorpsCeleste() {
-        System.out.println("Bienvenue dans la partie d'ajout de Corps Celeste"
-                + "veille");
+        System.out.println("\nBienvenue dans la partie d'ajout de Corps Celeste\n"
+                + "Veillez indiquer quel type de corps celeste voulez-vous rajouter?\n"
+                + "(1) Etoile\n"
+                + "(2) Lune\n"
+                + "(3) Planete Gazeuse\n"
+                + "(4) Planete"
+                + "(5)");
     }
 
     public void modifierCorpsCeleste() {
