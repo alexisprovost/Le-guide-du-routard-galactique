@@ -40,10 +40,10 @@ public class Menu {
             String reponse = sc.nextLine();
             switch (reponse) {
                 case "1":
-                    consulterEncyclopedie();
+                    consulterEncyclopedie(encyclopedie);
                     break;
                 case "2":
-                    nouveuaCorpsCeleste();
+                    nouveauCorpsCeleste();
                     break;
                 case "3":
                     modifierCorpsCeleste();
@@ -60,13 +60,7 @@ public class Menu {
         }
     }
 
-    public void consulterEncyclopedie() {
-        trieEnOrdreCroissant();
-        trieEnOrdreDecroissant();
-        triePourTellurique();
-    }
-
-    public void trieEnOrdreCroissant() {
+    public void consulterEncyclopedie(ArrayList<CorpsCeleste> encyclopedie) {
         for (int i = 1; i < encyclopedie.size(); i++) {
             CorpsCeleste valeur = encyclopedie.get(i);
             int position = i;
@@ -80,9 +74,6 @@ public class Menu {
             encyclopedie.get(i).affichage();
             System.out.println("\n");
         }
-    }
-
-    public void trieEnOrdreDecroissant() {
         Stack<CorpsCeleste> stack = new Stack();
         for (int i = 0; i < encyclopedie.size(); i++) {
             stack.push(encyclopedie.get(i));
@@ -91,9 +82,6 @@ public class Menu {
             stack.pop().affichage();
             System.out.println("\n");
         }
-    }
-
-    public void triePourTellurique() {
         for (int i = 0; i < encyclopedie.size(); i++) {
             if (encyclopedie.get(i) instanceof PlaneteTellurique) {
                 encyclopedie.get(i).affichage();
@@ -102,14 +90,32 @@ public class Menu {
         }
     }
 
-    public void nouveuaCorpsCeleste() {
+    public void nouveauCorpsCeleste() {
         System.out.println("\nBienvenue dans la partie d'ajout de Corps Celeste\n"
                 + "Veillez indiquer quel type de corps celeste voulez-vous rajouter?\n"
                 + "(1) Etoile\n"
                 + "(2) Lune\n"
                 + "(3) Planete Gazeuse\n"
-                + "(4) Planete"
-                + "(5)");
+                + "(4) Planete Naine\n"
+                + "(5) Planete Tellurique");
+        String reponse = sc.nextLine();
+        switch (reponse) {
+            case "1":
+                break;
+            case "2":
+                break;
+            case "3":
+                break;
+            case "4":
+                break;
+            case "5":
+                break;
+            default:
+        }
+    }
+
+    public void nouvelleEtoile() {
+        System.out.println("Quel est son nom?");
     }
 
     public void modifierCorpsCeleste() {
