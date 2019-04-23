@@ -24,13 +24,13 @@ import java.util.ArrayList;
  */
 public class Fichier implements java.io.Serializable {
 
-    ArrayList<CorpsCeleste> encyclopedie = new ArrayList<>();
+    ArrayList<CorpsCeleste> encyclopedie = null;
 
     public Fichier(ArrayList encyclopedie) {
         this.encyclopedie = encyclopedie;
     }
 
-    public void ouvertureTransfert() {
+    public void ouvertureProgramme() {
         //Regarde si le fichier guide.bin existe
         if (Files.exists(Paths.get("guide.bin"))) {
             //Existe
@@ -111,4 +111,6 @@ public class Fichier implements java.io.Serializable {
         }
 
     }
+    
+    public void fermetureProgramme(){}
 }

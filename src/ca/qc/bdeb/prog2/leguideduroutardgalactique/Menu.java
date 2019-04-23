@@ -28,6 +28,8 @@ public class Menu {
     }
 
     public void showMenu() {
+        Fichier fichier = new Fichier(encyclopedie);
+        fichier.ouvertureProgramme();
         while (true) {
             System.out.println("\nBienvenu dans le Guide du Routard Galactique\n"
                     + "\t1- Consulter l'encyclopedie\n"
@@ -117,5 +119,11 @@ public class Menu {
     }
 
     public void quitter() {
+        System.out.println("\nVoulez-vous vraiment quitter cette environement de plaisir? Oui ou Non");
+        String reponse = sc.nextLine();
+        switch (reponse.toLowerCase()) {
+            case "oui":
+                System.exit(0);
+        }
     }
 }
