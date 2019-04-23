@@ -16,7 +16,7 @@ public class PlaneteNaine extends CorpsCeleste implements Serializable {
 
     private Sorte typeDeNaine;
 
-    private enum Sorte {
+    public enum Sorte {
         ASTEROIDE,
         EPARS,
         CUBEWANO,

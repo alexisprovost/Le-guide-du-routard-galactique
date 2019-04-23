@@ -10,6 +10,7 @@ import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.Etoile;
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.Lune;
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.PlaneteGazeuse;
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.PlaneteNaine;
+import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.PlaneteNaine.Sorte;
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.PlaneteTellurique;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -105,47 +106,149 @@ public class Menu {
         String reponse = sc.nextLine();
         switch (reponse) {
             case "1":
+                nouvelleEtoile();
                 break;
             case "2":
+                nouvelleLune();
                 break;
             case "3":
+                nouvellePlaneteGazeuse();
                 break;
             case "4":
+                nouvellePlanetNaine();
                 break;
             case "5":
+                nouvellePlaneteTellurique();
                 break;
             default:
         }
     }
 
     public void nouvelleEtoile() {
-        System.out.println("Quel est son nom?");
+        System.out.println("\nQuel est son nom?");
+        String nom = sc.nextLine();
+        System.out.println("\nQuel est le rayon de l'astre?");
+        Double rayon = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+        System.out.println("\nA quel phase est-elle?");
+        int phase = gestionErreurChiffre(1, 14, sc.nextLine());
+        System.out.println("\nQuelle est sa masse?");
+        double masse = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+        System.out.println("\nQuel(s) planete(s) sont liee(s)? Separer par les avec des ';'");
+        String planetesLiees = sc.nextLine();
+        encyclopedie.add(new Etoile(nom, rayon, planetesLiees, phase, masse));
+    }
+
+    public void nouvelleLune() {
+        System.out.println("\nQuel est son nom?");
+        String nom = sc.nextLine();
+        System.out.println("\nQuel est le rayon de l'astre?");
+        double rayon = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+        System.out.println("\nQuel(s) planete(s) sont liee(s)? Separer par les avec des ';'");
+        String planetesLiees = sc.nextLine();
+        encyclopedie.add(new Lune(nom, rayon, planetesLiees));
+    }
+
+    public void nouvellePlaneteGazeuse() {
+        System.out.println("\nQuel est son nom?");
+        String nom = sc.nextLine();
+        System.out.println("\nQuel est le rayon de l'astre?");
+        double rayon = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+        System.out.println("\nL'atmosphere est-elle compatible? (Oui ou Non)");
+        boolean atmosphere = gestionErreurBoolean(sc.nextLine());
+        System.out.println("\nY a-t-il presence de vie? (Oui ou Non)");
+        boolean presenceDeVie = gestionErreurBoolean(sc.nextLine());
+        System.out.println("\nY a-t-il un ou des anneaux? (Oui ou Non)");
+        boolean anneaux = gestionErreurBoolean(sc.nextLine());
+        encyclopedie.add(new PlaneteGazeuse(nom, rayon, atmosphere, presenceDeVie, anneaux));
+    }
+
+    public void nouvellePlanetNaine() {
+        System.out.println("\nQuel est son nom?");
+        String nom = sc.nextLine();
+        System.out.println("\nQuel est le rayon de l'astre?");
+        double rayon = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+        System.out.println("\nQuel est son type? (1) Asteroide (2) Epars (3) Cubewano (4) Autres");
+        int type = gestionErreurChiffre(1, 4, sc.nextLine());
+        switch (type) {
+            case 1:
+                encyclopedie.add(new PlaneteNaine(nom, rayon, Sorte.ASTEROIDE));
+                break;
+            case 2:
+                encyclopedie.add(new PlaneteNaine(nom, rayon, Sorte.EPARS));
+                break;
+            case 3:
+                encyclopedie.add(new PlaneteNaine(nom, rayon, Sorte.CUBEWANO));
+                break;
+            case 4:
+                encyclopedie.add(new PlaneteNaine(nom, rayon, Sorte.AUTRE));
+                break;
+        }
+    }
+
+    public void nouvellePlaneteTellurique() {
+        System.out.println("\nQuel est son nom?");
+        String nom = sc.nextLine();
+        System.out.println("\nQuel est le rayon de l'astre?");
+        double rayon = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+        System.out.println("\nL'atmosphere est-elle compatible? (Oui ou Non)");
+        boolean atmosphere = gestionErreurBoolean(sc.nextLine());
+        System.out.println("\nY a-t-il presence de vie? (Oui ou Non)");
+        boolean presenceDeVie = gestionErreurBoolean(sc.nextLine());
+        System.out.println("");
+        double gravite = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+        System.out.println("");
+        double tempMin = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+        System.out.println("");
+        double tempMax = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+        System.out.println("");
+        double tempMoy = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
+
+// compatibilite
     }
 
     public int gestionErreurChiffre(int min, int max, String chiffre) {
         boolean boucle = true;
-        String inputChiffre;
+        String inputChiffre = chiffre;
         while (boucle) {
             try {
-                if (Integer.parseInt(chiffre) < min || Integer.parseInt(chiffre) > max) {
+                if (Integer.parseInt(inputChiffre) < min || Integer.parseInt(inputChiffre) > max) {
                     System.out.print("\nErreur chiffre non valide, entrer un chiffre valide: ");
                     inputChiffre = sc.nextLine();
-                } else if (Integer.parseInt(chiffre) > min || Integer.parseInt(chiffre) < max) {
+                } else if (Integer.parseInt(inputChiffre) >= min || Integer.parseInt(inputChiffre) <= max) {
                     boucle = false;
                 } else {
                     System.out.println("Internal Error l.137");
                 }
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 System.out.print("\nErreur chiffre non valide, entrer un chiffre valide: ");
                 inputChiffre = sc.nextLine();
-                System.out.println(e);
-                //Changer Exception
             }
         }
-        return Integer.parseInt(chiffre);
+        return Integer.parseInt(inputChiffre);
     }
 
-    public void gestionErreurBoolean(String toBool) {
+    public double gestionErreurDouble(double min, double max, String chiffre) {
+        boolean boucle = true;
+        String inputChiffre = chiffre;
+        while (boucle) {
+            try {
+                if (Double.parseDouble(inputChiffre) < min || Double.parseDouble(inputChiffre) > max) {
+                    System.out.print("\nErreur chiffre non valide, entrer un chiffre valide: ");
+                    inputChiffre = sc.nextLine();
+                } else if (Double.parseDouble(inputChiffre) >= min || Double.parseDouble(inputChiffre) <= max) {
+                    boucle = false;
+                } else {
+                    System.out.println("Internal Error l.137");
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("\nErreur chiffre non valide, entrer un chiffre valide: ");
+                inputChiffre = sc.nextLine();
+            }
+        }
+        return Double.parseDouble(inputChiffre);
+    }
+
+    public boolean gestionErreurBoolean(String toBool) {
         boolean boucle = true;
         String inputBool = toBool;
         boolean returnValue = false;
@@ -165,6 +268,7 @@ public class Menu {
                     break;
             }
         }
+        return returnValue;
     }
 
     public void modifierCorpsCeleste() {

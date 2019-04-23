@@ -24,3 +24,10 @@ public class Main {
         menu.showMenu();
     }
 }
+
+/*
+
+To do:
+    point ou virgule dans gestion double
+
+ */
