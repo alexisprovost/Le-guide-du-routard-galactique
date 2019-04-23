@@ -130,7 +130,7 @@ public class Menu {
         System.out.println("\nQuel est le rayon de l'astre?");
         Double rayon = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
         System.out.println("\nA quel phase est-elle?");
-        int phase = gestionErreurChiffre(0, (int) Double.POSITIVE_INFINITY, sc.nextLine());
+        int phase = gestionErreurChiffre(1, 14, sc.nextLine());
         System.out.println("\nQuelle est sa masse?");
         double masse = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
         System.out.println("\nQuel(s) planete(s) sont liee(s)? Separer par les avec des ';'");
