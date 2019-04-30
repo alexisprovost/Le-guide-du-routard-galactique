@@ -156,7 +156,7 @@ public class Menu {
         Fichier fichier = new Fichier(encyclopedie);
         fichier.ouvertureProgramme();
         while (true) {
-            System.out.println("\nBienvenu dans le Guide du Routard Galactique\n"
+            System.out.println("\nBienvenue dans le Guide du Routard Galactique\n"
                     + "\t1- Consulter l'encyclopedie\n"
                     + "\t2- Creer un nouveau corps celeste\n"
                     + "\t3- Modifier un corps celeste\n"
@@ -346,17 +346,44 @@ public class Menu {
         System.out.println("\nQuel est la temperature minimale?");
         double tempMin = gestionErreurDouble(-546.15, Double.POSITIVE_INFINITY, sc.nextLine());
         System.out.println("\nQuel est la temperature maximale?");
-        double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());      
+        double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());
         double tempMoy = (tempMax - tempMin) / 2;
         double compatibilite = compatibilite(rayon, gravite, presenceDeVie, atmosphere, tempMin, tempMax, tempMoy);
         encyclopedie.add(new PlaneteTellurique(nom, rayon, lunesLiees, atmosphere, presenceDeVie, presenceDeVie, gravite, tempMin, tempMax, tempMoy, compatibilite));
     }
 
+    public void supressionCorpsCeleste(int id) {
+        int searchId;
+        int pos = -1;
+        for (int i = 0; i < encyclopedie.size(); i++) {
+            searchId = encyclopedie.get(i).getId();
+            if (searchId == id) {
+                pos = i;
+            }
+        }
+
+        encyclopedie.remove(pos);
+    }
+    
+    public void modificationCorpsCeleste(int id){
+        int searchId;
+        int pos = -1;
+        for (int i = 0; i < encyclopedie.size(); i++) {
+            searchId = encyclopedie.get(i).getId();
+            if (searchId == id) {
+                pos = i;
+            }
+        }
+        
+        /* Modification pour chaque type de corps celeste selon leur attributs */
+    }
+
     public void modifierCorpsCeleste() {
-        System.out.println("\n(1)Supprimer ou (2)modifier: ");
-        String reponse = sc.nextLine();
         boolean premiereBoucle = true;
         while (premiereBoucle) {
+            System.out.println("\n(1)Supprimer ou (2)modifier: ");
+            String reponse = sc.nextLine();
+
             switch (reponse) {
                 case "1":
                     System.out.println("\nQuel type voulez vous afficher ?\n"
@@ -412,12 +439,103 @@ public class Menu {
                         default:
                             break;
                     }
+
+                    System.out.print("Voulez-vous voir une autre liste? (O/N) ou 0 pour revenir au menu principal: ");
+                    if (sc.nextLine().toLowerCase().equals("n")) {
+                        String entreId = "";
+                        int lastId = encyclopedie.get(encyclopedie.size() - 1).getId();
+                        while (true) {
+                            System.out.print("Quel ID voulez-vous Supprimer?: ");
+                            entreId = sc.nextLine();
+                            supressionCorpsCeleste(gestionErreurChiffre(0, lastId, entreId));
+                            System.out.println("Supression effectué!");
+                            premiereBoucle = false;
+                            break;
+                        }
+                    } else {
+
+                    }
+
                     break;
                 case "2":
+                    System.out.println("\nQuel type voulez vous afficher ?\n"
+                            + "1 Planète tellurique\n"
+                            + "2 Planète gazeuse\n"
+                            + "3 Planète naine\n"
+                            + "4 Étoile\n"
+                            + "5 Lune : ");
+
+                    String reponseType2 = sc.nextLine();
+
+                    switch (reponseType2) {
+                        case "1":
+                            for (int i = 0; i < encyclopedie.size(); i++) {
+                                if (encyclopedie.get(i) instanceof PlaneteTellurique) {
+                                    encyclopedie.get(i).affichage();
+                                    System.out.println("\n");
+                                }
+                            }
+                            break;
+                        case "2":
+                            for (int i = 0; i < encyclopedie.size(); i++) {
+                                if (encyclopedie.get(i) instanceof PlaneteGazeuse) {
+                                    encyclopedie.get(i).affichage();
+                                    System.out.println("\n");
+                                }
+                            }
+                            break;
+                        case "3":
+                            for (int i = 0; i < encyclopedie.size(); i++) {
+                                if (encyclopedie.get(i) instanceof PlaneteNaine) {
+                                    encyclopedie.get(i).affichage();
+                                    System.out.println("\n");
+                                }
+                            }
+                            break;
+                        case "4":
+                            for (int i = 0; i < encyclopedie.size(); i++) {
+                                if (encyclopedie.get(i) instanceof Etoile) {
+                                    encyclopedie.get(i).affichage();
+                                    System.out.println("\n");
+                                }
+                            }
+                            break;
+                        case "5":
+                            for (int i = 0; i < encyclopedie.size(); i++) {
+                                if (encyclopedie.get(i) instanceof Lune) {
+                                    encyclopedie.get(i).affichage();
+                                    System.out.println("\n");
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+                    System.out.print("Voulez-vous voir une autre liste? (O/N) ou 0 pour revenir au menu principal: ");
+                    if (sc.nextLine().toLowerCase().equals("n")) {
+                        String entreId = "";
+                        int lastId = encyclopedie.get(encyclopedie.size() - 1).getId();
+                        while (true) {
+                            System.out.print("Quel ID voulez-vous modifier?: ");
+                            entreId = sc.nextLine();
+                            modificationCorpsCeleste(gestionErreurChiffre(0, lastId, entreId));
+                            System.out.println("Supression effectué!");
+                            premiereBoucle = false;
+                            break;
+                        }
+                    } else {
+
+                    }
+                    
+                    break;
+                case "0":
+                    premiereBoucle = false;
                     break;
                 default:
                     break;
             }
+
         }
 
     }

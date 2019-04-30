@@ -30,6 +30,10 @@ public abstract class CorpsCeleste implements Serializable {
         return nom;
     }
 
+    public int getId() {
+        return id;
+    }
+    
     public void affichage() {
     }
 
