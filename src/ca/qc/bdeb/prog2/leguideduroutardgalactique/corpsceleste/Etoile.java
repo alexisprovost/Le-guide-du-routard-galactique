@@ -6,6 +6,7 @@
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
@@ -14,15 +15,28 @@ import java.io.Serializable;
  */
 public class Etoile extends CorpsCeleste implements Serializable {
 
-    private String planetesLier;
+    private ArrayList<CorpsCeleste> planetesLier;
     private int phase;
     private double masse;
 
-    public Etoile(String nom, double rayon, String planetesLier, int phase, double masse) {
+    public Etoile(String nom, double rayon, ArrayList<CorpsCeleste> planetesLier, int phase, double masse) {
         super(nom, rayon);
         this.planetesLier = planetesLier;
         this.phase = phase;
         this.masse = masse;
+    }
+
+    @Override
+    public void affichageObjetLier() {
+        System.out.println("\nL'etoile " + nom + " a comme planete(s) liee(s):");
+        if (planetesLier.isEmpty() == false) {
+            for (int i = 0; i < planetesLier.size(); i++) {
+                System.out.println(planetesLier.get(i).getNom());
+                System.out.println("\n");
+            }
+        } else {
+            System.out.println("Il n'y a pas de planete(s) liee(s).");
+        }
     }
 
     @Override

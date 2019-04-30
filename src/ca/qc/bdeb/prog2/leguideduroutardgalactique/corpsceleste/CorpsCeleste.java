@@ -30,4 +30,7 @@ public abstract class CorpsCeleste {
 
     public void affichage() {
     }
+
+    public void affichageObjetLier() {
+    }
 }
