@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class PlaneteNaine extends CorpsCeleste implements Serializable {
+public class PlaneteNaine extends CorpsCeleste {
 
     private Sorte typeDeNaine;
 
@@ -30,7 +30,7 @@ public class PlaneteNaine extends CorpsCeleste implements Serializable {
 
     @Override
     public void affichage() {
-        System.out.println("ID: " + id + "\n"
+        System.out.println("\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
                 + "Type de Naine: " + typeDeNaine + "\n");

@@ -5,12 +5,14 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
+import java.io.Serializable;
+
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
  *
  */
-public abstract class CorpsCeleste {
+public abstract class CorpsCeleste implements Serializable {
 
     private static int idSequentiel = 1;
 
@@ -29,5 +31,8 @@ public abstract class CorpsCeleste {
     }
 
     public void affichage() {
+    }
+
+    public void affichageObjetLier() {
     }
 }

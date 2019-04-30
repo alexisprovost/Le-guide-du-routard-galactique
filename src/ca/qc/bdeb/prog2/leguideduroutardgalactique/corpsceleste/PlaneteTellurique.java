@@ -13,14 +13,15 @@ import java.util.ArrayList;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class PlaneteTellurique extends CorpsCeleste implements Serializable {
+public class PlaneteTellurique extends CorpsCeleste {
 
     protected double gravite, temperatureMax, temperatureMoy, temperatureMin, pointageCompatibilite;
     protected boolean presenceEau, presenceVie, atmosphereCompatible;
-    protected ArrayList<CorpsCeleste> lune = null;
+    protected ArrayList<Lune> lunes = null;
 
-    public PlaneteTellurique(String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean presenceEau, double gravite, double temperatureMin, double temperatureMax, double temperatureMoy, double pointageCompatibilite) {
+    public PlaneteTellurique(String nom, double rayon, ArrayList<Lune> lunes, boolean atmosphereCompatible, boolean presenceVie, boolean presenceEau, double gravite, double temperatureMin, double temperatureMax, double temperatureMoy, double pointageCompatibilite) {
         super(nom, rayon);
+        this.lunes = lunes;
         this.atmosphereCompatible = atmosphereCompatible;
         this.presenceVie = presenceVie;
         this.presenceEau = presenceEau;
@@ -32,17 +33,20 @@ public class PlaneteTellurique extends CorpsCeleste implements Serializable {
     }
 
     @Override
+    public void affichageObjetLier() {
+    }
+
+    @Override
     public void affichage() {
-        System.out.println("ID: " + id + "\n"
+        System.out.println("\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
                 + "Presence d'eau: " + presenceEau + "\n"
                 + "Presence de vie: " + presenceVie + "\n"
                 + "Gravite: " + gravite + "\n"
                 + "Atmosphere compatible: " + atmosphereCompatible + "\n"
-                + "Temperature: " + temperatureMin + "°C a" + temperatureMax + "°C, " + temperatureMoy + "°C en moyenne\n"
+                + "Temperature: " + temperatureMin + "°C a " + temperatureMax + "°C, " + temperatureMoy + "°C en moyenne\n"
                 // en constrution         + "Lune(s) associees: " + +"\n"
                 + "Pointage de compatibilite: " + pointageCompatibilite);
     }
-
 }
