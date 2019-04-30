@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class PlaneteNaine extends CorpsCeleste implements Serializable {
+public class PlaneteNaine extends CorpsCeleste {
 
     private Sorte typeDeNaine;
 

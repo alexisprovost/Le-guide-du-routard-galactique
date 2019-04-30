@@ -13,9 +13,10 @@ import java.util.ArrayList;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class Etoile extends CorpsCeleste implements Serializable {
+public class Etoile extends CorpsCeleste {
 
-    private ArrayList<CorpsCeleste> planetesLier;
+
+    private ArrayList<CorpsCeleste> planetesLier = new ArrayList<CorpsCeleste>();
     private int phase;
     private double masse;
 

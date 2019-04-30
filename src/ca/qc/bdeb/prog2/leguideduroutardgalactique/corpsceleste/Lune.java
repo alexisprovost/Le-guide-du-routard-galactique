@@ -12,9 +12,7 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class Lune extends CorpsCeleste implements Serializable {
-
-    private String planeteLier;
+public class Lune extends CorpsCeleste{
 
     public Lune(String nom, double rayon) {
         super(nom, rayon);
@@ -24,6 +22,6 @@ public class Lune extends CorpsCeleste implements Serializable {
     public void affichage() {
         System.out.println("\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
-                + "Rayon: " + rayon + "\n");
+                + "Rayon: " + rayon);
     }
 }
