@@ -25,7 +25,7 @@ public class PlaneteGazeuse extends CorpsCeleste {
 
     @Override
     public void affichage() {
-        System.out.println("ID: " + id + "\n"
+        System.out.println("\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
                 + "Presence de vie: " + presenceVie + "\n"

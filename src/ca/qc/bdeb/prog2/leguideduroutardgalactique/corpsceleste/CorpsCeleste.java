@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public abstract class CorpsCeleste implements Serializable{
+public abstract class CorpsCeleste implements Serializable {
 
     private static int idSequentiel = 1;
 
@@ -30,7 +30,6 @@ public abstract class CorpsCeleste implements Serializable{
         return nom;
     }
 
-    @Override
     public void affichage() {
     }
 

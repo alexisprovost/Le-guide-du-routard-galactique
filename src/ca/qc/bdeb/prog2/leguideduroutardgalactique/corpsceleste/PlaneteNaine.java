@@ -30,7 +30,7 @@ public class PlaneteNaine extends CorpsCeleste {
 
     @Override
     public void affichage() {
-        System.out.println("ID: " + id + "\n"
+        System.out.println("\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
                 + "Type de Naine: " + typeDeNaine + "\n");

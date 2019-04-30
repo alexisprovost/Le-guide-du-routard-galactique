@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class Lune extends CorpsCeleste{
+public class Lune extends CorpsCeleste {
 
     public Lune(String nom, double rayon) {
         super(nom, rayon);
