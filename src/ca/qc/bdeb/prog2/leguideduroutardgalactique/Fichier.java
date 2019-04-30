@@ -17,6 +17,7 @@ import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
@@ -55,6 +56,7 @@ public class Fichier implements java.io.Serializable {
                 try (BufferedReader bufferedreader = new BufferedReader(new FileReader(file))) {
                     String ligne = "";
                     String lunesLieesString;
+                    Random rd = new Random();
                     while ((ligne = bufferedreader.readLine()) != null) {
                         String[] array = ligne.split(";");
                         //Saute les descriptions de valeurs
@@ -87,11 +89,12 @@ public class Fichier implements java.io.Serializable {
                             // Ajoute le(s) lune(s)
                             lunesLieesString = array[9];
                             ArrayList<Lune> lunesLiees = new ArrayList();
-                            if ( !lunesLieesString.equals("")) {
+                            if (!lunesLieesString.equals("")) {
                                 try {
                                     String[] arrayLunes = lunesLieesString.split(",");
                                     for (int i = 0; i < arrayLunes.length; i++) {
-                                        lunesLiees.add(new Lune(arrayLunes[i], 0));
+                                        double rayon = rd.nextDouble() * 10000.0;
+                                        lunesLiees.add(new Lune(arrayLunes[i], rayon));
                                         encyclopedie.add(lunesLiees.get(i));
                                     }
                                 } catch (ArrayIndexOutOfBoundsException e) {

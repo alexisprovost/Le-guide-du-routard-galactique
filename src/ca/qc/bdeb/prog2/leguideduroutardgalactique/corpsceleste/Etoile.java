@@ -15,7 +15,6 @@ import java.util.ArrayList;
  */
 public class Etoile extends CorpsCeleste {
 
-
     private ArrayList<CorpsCeleste> planetesLier = new ArrayList<CorpsCeleste>();
     private int phase;
     private double masse;
@@ -42,7 +41,7 @@ public class Etoile extends CorpsCeleste {
 
     @Override
     public void affichage() {
-        System.out.println("ID: " + id + "\n"
+        System.out.println("\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
                 + "Phase: " + phase + "\n"
