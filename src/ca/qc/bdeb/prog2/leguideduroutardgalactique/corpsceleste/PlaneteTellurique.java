@@ -32,6 +32,10 @@ public class PlaneteTellurique extends CorpsCeleste {
         this.pointageCompatibilite = pointageCompatibilite;
     }
 
+    public double getPointageCompatibilite() {
+        return pointageCompatibilite;
+    }
+
     @Override
     public void affichageObjetLier() {
     }
@@ -45,8 +49,14 @@ public class PlaneteTellurique extends CorpsCeleste {
                 + "Presence de vie: " + presenceVie + "\n"
                 + "Gravite: " + gravite + "\n"
                 + "Atmosphere compatible: " + atmosphereCompatible + "\n"
-                + "Temperature: " + temperatureMin + "°C a " + temperatureMax + "°C, " + temperatureMoy + "°C en moyenne\n"
-                // en constrution         + "Lune(s) associees: " + +"\n"
-                + "Pointage de compatibilite: " + pointageCompatibilite);
+                + "Temperature: " + temperatureMin + "°C a " + temperatureMax + "°C, " + temperatureMoy + "°C en moyenne\n");
+        System.out.println("Lune(s) associee(s): ");
+        for (int i = 0; i < lunes.size(); i++) {
+            lunes.get(i).getNom();
+            if (lunes.size() > 1) {
+                System.out.println("");
+            }
+        }
+        System.out.println("Pointage de compatibilite: " + pointageCompatibilite);
     }
 }

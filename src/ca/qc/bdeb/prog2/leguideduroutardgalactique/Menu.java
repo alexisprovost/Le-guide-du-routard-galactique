@@ -189,33 +189,76 @@ public class Menu {
         for (int i = 0; i < encyclopedie.size(); i++) {
             encyclopedie.get(i).affichage();
         }
-//        for (int i = 1; i < encyclopedie.size(); i++) {
-//            CorpsCeleste valeur = encyclopedie.get(i);
-//            int position = i;
-//            while (position > 0 && encyclopedie.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
-//                encyclopedie.set(position, encyclopedie.get(position - 1));
-//                position--;
-//            }
-//            encyclopedie.set(position, valeur);
-//        }
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            encyclopedie.get(i).affichage();
-//            System.out.println("\n");
-//        }
-//        Stack<CorpsCeleste> stack = new Stack();
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            stack.push(encyclopedie.get(i));
-//        }
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            stack.pop().affichage();
-//            System.out.println("\n");
-//        }
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            if (encyclopedie.get(i) instanceof PlaneteTellurique) {
-//                encyclopedie.get(i).affichage();
-//                System.out.println("\n");
-//            }
-//        }
+        boolean continuer = true;
+
+        while (continuer) {
+            System.out.println("\n(1) Afficher par ordre alphabetique"
+                    + "\n(2) Afficher les planetes telluriques par ordre decroissant de probabilite"
+                    + "\n(3) Afficher la(les) planete(s) et sa(leurs) lune(s) pour une etoile");
+            switch (sc.nextLine()) {
+                case "1":
+                    for (int i = 1; i < encyclopedie.size(); i++) {
+                        CorpsCeleste valeur = encyclopedie.get(i);
+                        int position = i;
+                        while (position > 0 && encyclopedie.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
+                            encyclopedie.set(position, encyclopedie.get(position - 1));
+                            position--;
+                        }
+                        encyclopedie.set(position, valeur);
+                    }
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        encyclopedie.get(i).affichage();
+                        System.out.println("\n");
+                    }
+                    Stack<CorpsCeleste> stack = new Stack();
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        stack.push(encyclopedie.get(i));
+                    }
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        stack.pop().affichage();
+                        System.out.println("\n");
+                    }
+                    continuer = false;
+                    break;
+                case "2":
+                    ArrayList<PlaneteTellurique> planete = new ArrayList();
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        if (encyclopedie.get(i) instanceof PlaneteTellurique) {
+                            planete.add((PlaneteTellurique) encyclopedie.get(i));
+                        }
+                    }
+                    CorpsCeleste temp;
+                    for (int position = planete.size() - 1; position >= 0; position--) {
+                        for (int recherche = 0; recherche <= position - 1; recherche++) {
+                            if (planete.get(recherche).getPointageCompatibilite() > planete.get(recherche + 1).getPointageCompatibilite()) {
+                                temp = planete.get(recherche);
+                                planete.add(recherche, planete.get(recherche + 1));
+                                planete.add(recherche + 1, planete.get(recherche));
+                            }
+                        }
+                    }
+                    for (int i = 0; i < planete.size(); i++) {
+                        planete.get(i).affichage();
+                    }
+                    continuer = false;
+                    break;
+                case "3":
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        if (encyclopedie.get(i) instanceof Etoile) {
+                           encyclopedie.get(i).affichage();
+                        }
+                    }
+                    System.out.println("\nRentrer le id de l'etoile pour afficher ses planetes relier eet leurs lunes");
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        if(sc.nextLine().equals(encyclopedie.get(i).getId())){
+                            encyclopedie.get(i).affichage();
+                        }
+                    }
+                    continuer = false;
+                    break;
+                default:
+            }
+        }
     }
 
     public void nouveauCorpsCeleste() {
@@ -346,7 +389,7 @@ public class Menu {
         System.out.println("\nQuel est la temperature minimale?");
         double tempMin = gestionErreurDouble(-546.15, Double.POSITIVE_INFINITY, sc.nextLine());
         System.out.println("\nQuel est la temperature maximale?");
-        double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());      
+        double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());
         double tempMoy = (tempMax - tempMin) / 2;
         double compatibilite = compatibilite(rayon, gravite, presenceDeVie, atmosphere, tempMin, tempMax, tempMoy);
         encyclopedie.add(new PlaneteTellurique(nom, rayon, lunesLiees, atmosphere, presenceDeVie, presenceDeVie, gravite, tempMin, tempMax, tempMoy, compatibilite));
