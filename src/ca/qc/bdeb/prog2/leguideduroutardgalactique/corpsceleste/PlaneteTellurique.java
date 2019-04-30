@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class PlaneteTellurique extends CorpsCeleste implements Serializable {
+public class PlaneteTellurique extends CorpsCeleste {
 
     protected double gravite, temperatureMax, temperatureMoy, temperatureMin, pointageCompatibilite;
     protected boolean presenceEau, presenceVie, atmosphereCompatible;

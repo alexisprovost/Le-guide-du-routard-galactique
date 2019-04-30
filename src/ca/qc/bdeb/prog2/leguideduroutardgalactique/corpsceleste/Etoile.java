@@ -6,19 +6,21 @@
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
  *
  */
-public class Etoile extends CorpsCeleste implements Serializable {
+public class Etoile extends CorpsCeleste {
 
-    private String planetesLier;
+    private ArrayList<CorpsCeleste> planetesLier = new ArrayList<CorpsCeleste>();
+    
     private int phase;
     private double masse;
 
-    public Etoile(String nom, double rayon, String planetesLier, int phase, double masse) {
+    public Etoile(String nom, double rayon, ArrayList<CorpsCeleste> planetesLier, int phase, double masse) {
         super(nom, rayon);
         this.planetesLier = planetesLier;
         this.phase = phase;

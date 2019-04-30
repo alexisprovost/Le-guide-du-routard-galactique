@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class PlaneteGazeuse extends CorpsCeleste implements Serializable {
+public class PlaneteGazeuse extends CorpsCeleste {
 
     private boolean atmosphereCompatible, presenceVie, anneau;
 

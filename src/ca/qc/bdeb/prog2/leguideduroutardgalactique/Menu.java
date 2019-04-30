@@ -340,7 +340,8 @@ public class Menu {
         System.out.println("\nQuel est la temperature maximale?");
         double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());
         System.out.println("\nY a-t-il une ou des lunes?");
-        if(sc.nextLine().toLowerCase() == "oui"){}
+        if (sc.nextLine().toLowerCase() == "oui") {
+        }
         double tempMoy = (tempMax - tempMin) / 2;
         double compatibilite = compatibilite(rayon, gravite, presenceDeVie, atmosphere, tempMin, tempMax, tempMoy);
         encyclopedie.add(new PlaneteTellurique(nom, rayon, lunesLiees, atmosphere, presenceDeVie, presenceDeVie, gravite, tempMin, tempMax, tempMoy, compatibilite));
@@ -450,7 +451,7 @@ public class Menu {
             case "2":
                 for (int i = 0; i < encyclopedie.size(); i++) {
                     if (encyclopedie.get(i) instanceof Etoile) {
-                        encyclopedie.get(i).affichageObjetLier();
+                        encyclopedie.get(i).affichage();
                     }
                 }
                 break;
