@@ -6,6 +6,7 @@
 package ca.qc.bdeb.prog2.leguideduroutardgalactique;
 
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.CorpsCeleste;
+import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.Lune;
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.PlaneteTellurique;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -53,6 +54,7 @@ public class Fichier implements java.io.Serializable {
                 String file = "420-202-RE - H19 - Annexe - Planètes et lunes.csv";
                 try (BufferedReader bufferedreader = new BufferedReader(new FileReader(file))) {
                     String ligne = "";
+                    String lunesLieesString;
                     while ((ligne = bufferedreader.readLine()) != null) {
                         String[] array = ligne.split(";");
                         //Saute les descriptions de valeurs
@@ -82,9 +84,24 @@ public class Fichier implements java.io.Serializable {
                             } else if (array[3] == "non") {
                                 array[3] = "false";
                             }
+                            // Ajoute le(s) lune(s)
+                            lunesLieesString = array[9];
+                            ArrayList<Lune> lunesLiees = new ArrayList();
+                            if ( !lunesLieesString.equals("")) {
+                                try {
+                                    String[] arrayLunes = lunesLieesString.split(",");
+                                    for (int i = 0; i < arrayLunes.length; i++) {
+                                        lunesLiees.add(new Lune(arrayLunes[i], 0));
+                                        encyclopedie.add(lunesLiees.get(i));
+                                    }
+                                } catch (ArrayIndexOutOfBoundsException e) {
+                                    System.out.println(e);
+                                }
+                            }
                             try {
                                 encyclopedie.add(new PlaneteTellurique(array[0],
                                         Double.parseDouble(array[1]),
+                                        lunesLiees,
                                         Boolean.parseBoolean(array[5]),
                                         Boolean.parseBoolean(array[2]),
                                         Boolean.parseBoolean(array[3]),
@@ -104,13 +121,16 @@ public class Fichier implements java.io.Serializable {
                 }
             } catch (IOException e) {
                 System.out.println(e);
-            } catch (Exception e) {
-                //Erreur inconnue
-                System.out.println(e);
             }
+//            } catch (Exception e) {
+//                //Erreur inconnue
+//                System.out.println("EEEEEEEEE");
+//                System.out.println(e);
+//            }
         }
 
     }
-    
-    public void fermetureProgramme(){}
+
+    public void fermetureProgramme() {
+    }
 }

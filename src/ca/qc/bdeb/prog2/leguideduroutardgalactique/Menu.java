@@ -28,7 +28,7 @@ public class Menu {
     private Scanner sc = new Scanner(System.in);
     private ArrayList<CorpsCeleste> encyclopedie = new ArrayList();
     private ArrayList<CorpsCeleste> planetesLiees = new ArrayList();
-    private ArrayList<CorpsCeleste> lunesLiees = new ArrayList();
+    private ArrayList<Lune> lunesLiees = new ArrayList();
 
     public Menu(ArrayList<CorpsCeleste> encyclopedie) {
         this.encyclopedie = encyclopedie;
@@ -256,14 +256,18 @@ public class Menu {
         int phase = gestionErreurChiffre(0, (int) Double.POSITIVE_INFINITY, sc.nextLine());
         System.out.println("\nQuelle est sa masse?");
         double masse = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
-        System.out.println("\nQuel(s) planete(s) sont liee(s)? Separer par les avec des ';'");
+        System.out.println("\nQuel(s) planete(s) sont liee(s)? Separer par les avec des ';' ou s'il y en a pas ecrivez rien.");
         String planetesLieesString = sc.nextLine();
-        String[] array = planetesLieesString.split(";");
-        for (int i = 0; i < array.length; i++) {
-            if (array[0] == encyclopedie.get(i).getNom()) {
-                planetesLiees.add(encyclopedie.get(i));
-            } else {
-                System.out.println("Aucune planete avec le nom de " + array[i] + " a ete trouver");
+        if (!planetesLieesString.equals("")) {
+            String[] array = planetesLieesString.split(";");
+            for (int l = 0; l < array.length; l++) {
+                for (int i = 0; i < encyclopedie.size(); i++) {
+                    if (array[l] == encyclopedie.get(i).getNom()) {
+                        planetesLiees.add(encyclopedie.get(i));
+                    } else {
+                        System.out.println("Aucune planete avec le nom de " + array[i] + " a ete trouver");
+                    }
+                }
             }
         }
         encyclopedie.add(new Etoile(nom, rayon, planetesLiees, phase, masse));
@@ -319,14 +323,18 @@ public class Menu {
         String nom = sc.nextLine();
         System.out.println("\nQuel est le rayon de l'astre?");
         double rayon = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
-        System.out.println("\nQuel(s) lune(s) sont liee(s)? Separer par les avec des ';'");
+        System.out.println("\nQuel(s) lune(s) sont liee(s)? Separer par les avec des ';' Fou s'il y en a pas ecrivez rien.");
         String lunesLieesString = sc.nextLine();
-        String[] array = lunesLieesString.split(";");
-        for (int i = 0; i < array.length; i++) {
-            if (array[0] == encyclopedie.get(i).getNom()) {
-                lunesLiees.add(encyclopedie.get(i));
-            } else {
-                System.out.println("Aucune lune avec le nom de " + array[i] + " a ete trouver");
+        if (!lunesLieesString.equals("")) {
+            String[] array = lunesLieesString.split(";");
+            for (int l = 0; l < array.length; l++) {
+                for (int i = 0; i < encyclopedie.size(); i++) {
+                    if (array[l] == encyclopedie.get(i).getNom()) {
+                        planetesLiees.add(encyclopedie.get(i));
+                    } else {
+                        System.out.println("Aucune lune avec le nom de " + array[i] + " a ete trouver");
+                    }
+                }
             }
         }
         System.out.println("\nL'atmosphere est-elle compatible? (Oui ou Non)");
@@ -338,10 +346,7 @@ public class Menu {
         System.out.println("\nQuel est la temperature minimale?");
         double tempMin = gestionErreurDouble(-546.15, Double.POSITIVE_INFINITY, sc.nextLine());
         System.out.println("\nQuel est la temperature maximale?");
-        double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());
-        System.out.println("\nY a-t-il une ou des lunes?");
-        if (sc.nextLine().toLowerCase() == "oui") {
-        }
+        double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());      
         double tempMoy = (tempMax - tempMin) / 2;
         double compatibilite = compatibilite(rayon, gravite, presenceDeVie, atmosphere, tempMin, tempMax, tempMoy);
         encyclopedie.add(new PlaneteTellurique(nom, rayon, lunesLiees, atmosphere, presenceDeVie, presenceDeVie, gravite, tempMin, tempMax, tempMoy, compatibilite));

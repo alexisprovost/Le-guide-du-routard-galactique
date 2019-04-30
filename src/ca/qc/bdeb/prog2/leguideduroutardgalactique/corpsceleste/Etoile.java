@@ -15,8 +15,8 @@ import java.util.ArrayList;
  */
 public class Etoile extends CorpsCeleste {
 
+
     private ArrayList<CorpsCeleste> planetesLier = new ArrayList<CorpsCeleste>();
-    
     private int phase;
     private double masse;
 
@@ -25,6 +25,19 @@ public class Etoile extends CorpsCeleste {
         this.planetesLier = planetesLier;
         this.phase = phase;
         this.masse = masse;
+    }
+
+    @Override
+    public void affichageObjetLier() {
+        System.out.println("\nL'etoile " + nom + " a comme planete(s) liee(s):");
+        if (planetesLier.isEmpty() == false) {
+            for (int i = 0; i < planetesLier.size(); i++) {
+                System.out.println(planetesLier.get(i).getNom());
+                System.out.println("\n");
+            }
+        } else {
+            System.out.println("Il n'y a pas de planete(s) liee(s).");
+        }
     }
 
     @Override

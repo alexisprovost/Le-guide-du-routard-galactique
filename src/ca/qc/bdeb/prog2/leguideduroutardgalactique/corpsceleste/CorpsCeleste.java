@@ -33,4 +33,7 @@ public abstract class CorpsCeleste implements Serializable{
     @Override
     public void affichage() {
     }
+
+    public void affichageObjetLier() {
+    }
 }
