@@ -111,7 +111,6 @@ public class Fichier implements java.io.Serializable {
                                         Double.parseDouble(array[4]),
                                         Double.parseDouble(array[8]),
                                         Double.parseDouble(array[6]),
-                                        Double.parseDouble(array[7]),
                                         Double.parseDouble(array[17])));
                             } catch (NumberFormatException e) {
                                 System.out.println(e);

@@ -26,6 +26,18 @@ public class Etoile extends CorpsCeleste {
         this.masse = masse;
     }
 
+    public void setPhase(int phase) {
+        this.phase = phase;
+    }
+
+    public void setMasse(double masse) {
+        this.masse = masse;
+    }
+
+    public void setPlanetesLier(ArrayList<CorpsCeleste> planetesLier) {
+        this.planetesLier = planetesLier;
+    }
+    
     @Override
     public void affichageObjetLier() {
         System.out.println("\nL'etoile " + nom + " a comme planete(s) liee(s):");
@@ -40,11 +52,11 @@ public class Etoile extends CorpsCeleste {
     }
 
     @Override
-    public void affichage() {
-        System.out.println("\nID: " + id + "\n"
+    public String toString() {
+        return "\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
                 + "Phase: " + phase + "\n"
-                + "Masse: " + masse + "\n");
+                + "Masse: " + masse + "\n";
     }
 }
