@@ -25,10 +25,11 @@ public class Menu {
 
     private Scanner sc = new Scanner(System.in);
     private ArrayList<CorpsCeleste> encyclopedie = new ArrayList();
-    private Fichier fichier = new Fichier(encyclopedie);
+    private Fichier fichier = null;
 
-    public Menu(ArrayList<CorpsCeleste> encyclopedie) {
+    public Menu(ArrayList<CorpsCeleste> encyclopedie,Fichier fichier) {
         this.encyclopedie = encyclopedie;
+        this.fichier = fichier;
     }
 
     public void showMenu() {

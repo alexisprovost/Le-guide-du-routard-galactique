@@ -41,7 +41,7 @@ public class Etoile extends CorpsCeleste {
     @Override
     public void affichageObjetLier() {
         for (int i = 0; i < planetesLier.size(); i++) {
-            planetesLier.get(i).affichage();
+            System.out.println(planetesLier.get(i));
         }
     }
 

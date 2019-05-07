@@ -20,7 +20,9 @@ public class Main {
      */
     public static void main(String[] args) {
         ArrayList<CorpsCeleste> encyclopedie = new ArrayList<>();
-        Menu menu = new Menu(encyclopedie);
+        Fichier fichier = new Fichier(encyclopedie);
+        Menu menu = new Menu(encyclopedie,fichier);
+        
         menu.showMenu();
     }
 }
