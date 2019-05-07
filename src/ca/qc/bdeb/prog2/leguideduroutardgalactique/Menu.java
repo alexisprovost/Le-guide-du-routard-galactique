@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique;
 
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.CorpsCeleste;
@@ -19,7 +13,6 @@ import java.util.Scanner;
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
- *
  */
 public class Menu {
 
@@ -27,11 +20,19 @@ public class Menu {
     private ArrayList<CorpsCeleste> encyclopedie = new ArrayList();
     private Fichier fichier = null;
 
+    /**
+     * Constructeur Menu
+     * @param encyclopedie ArrayList de corps celeste
+     * @param fichier Objet ficher
+     */
     public Menu(ArrayList<CorpsCeleste> encyclopedie,Fichier fichier) {
         this.encyclopedie = encyclopedie;
         this.fichier = fichier;
     }
 
+    /**
+     * Affiche le menu principal du programe
+     */
     public void showMenu() {
         encyclopedie = fichier.ouvertureProgramme();
         while (true) {
@@ -64,6 +65,13 @@ public class Menu {
         }
     }
 
+    /**
+     * Gere les erreur d'entrée des chiffres
+     * @param min Valeur en int minimale possible
+     * @param max Valeur en int maximale possible
+     * @param chiffre Valeur en String qui doit etre vérifié
+     * @return 
+     */
     public int gestionErreurChiffre(int min, int max, String chiffre) {
         boolean boucle = true;
         String inputChiffre = chiffre;
@@ -85,6 +93,13 @@ public class Menu {
         return Integer.parseInt(inputChiffre);
     }
 
+    /**
+     * Gere les erreur d'entrée des Doubles
+     * @param min Valeur en double minimale possible
+     * @param maxValeur Valeur en double maximale possible
+     * @param chiffre Valeur en String qui doit etre vérifié
+     * @return 
+     */
     public double gestionErreurDouble(double min, double max, String chiffre) {
         boolean boucle = true;
         String inputChiffre = chiffre;

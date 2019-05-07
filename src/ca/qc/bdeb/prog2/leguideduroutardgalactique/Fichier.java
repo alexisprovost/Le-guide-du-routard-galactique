@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique;
 
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.CorpsCeleste;
@@ -25,24 +20,27 @@ import java.util.Random;
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
- *
  */
 public class Fichier implements Serializable {
 
-    //private ArrayList<CorpsCeleste> encyclopedie = null;
+    private String nomFichier = "guide.bin";
 
-    //public Fichier(ArrayList encyclopedie) {
-    //    this.encyclopedie = encyclopedie;
-    //}
+    public Fichier() {
+       
+    }
 
+    /**
+     * Méthode qui lis les donnée du fichier csv ou bin
+     * @return Les données du fichier csv ou bin
+     */
     public ArrayList<CorpsCeleste> ouvertureProgramme() {
         //Regarde si le fichier guide.bin existe
         ArrayList<CorpsCeleste> encyclopedie = new ArrayList<CorpsCeleste>();
         
-        if (Files.exists(Paths.get("guide.bin"))) {
+        if (Files.exists(Paths.get(nomFichier))) {
             //Existe
             try {
-                FileInputStream readBin = new FileInputStream("guide.bin");
+                FileInputStream readBin = new FileInputStream(nomFichier);
                 ObjectInputStream fff = new ObjectInputStream(readBin);
                 encyclopedie = (ArrayList<CorpsCeleste>) fff.readObject();
                 return encyclopedie;
@@ -134,9 +132,13 @@ public class Fichier implements Serializable {
         return encyclopedie;
     }
 
+    /**
+     * Méthode qui Enregistre les données de l'encyclopedie
+     * @param encyclopedie les données de l'encyclopedie
+     */
     public void fermetureProgramme(ArrayList<CorpsCeleste> encyclopedie) {
         try {
-            FileOutputStream fos = new FileOutputStream("guide.bin");
+            FileOutputStream fos = new FileOutputStream(nomFichier);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(encyclopedie);
             oos.flush();
