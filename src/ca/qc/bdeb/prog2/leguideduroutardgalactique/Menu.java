@@ -33,7 +33,7 @@ public class Menu {
     }
 
     public void showMenu() {
-        fichier.ouvertureProgramme();
+        encyclopedie = fichier.ouvertureProgramme();
         while (true) {
             System.out.println("\nBienvenue dans le Guide du Routard Galactique\n"
                     + "\t1- Consulter l'encyclopedie\n"
@@ -570,7 +570,6 @@ public class Menu {
         ((Etoile) encyclopedie.get(id)).setMasse(masse);
         ((Etoile) encyclopedie.get(id)).setPlanetesLier(planetesLiees);
     }
-
  
     /**
      * Méthode qui gère les modification des lunes
@@ -586,8 +585,6 @@ public class Menu {
         encyclopedie.get(id).setNom(nom);
         encyclopedie.get(id).setRayon(rayon);
     }
-
-
     
     /**
      * Méthode qui modifie les corps celestes

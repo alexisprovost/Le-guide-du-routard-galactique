@@ -29,20 +29,20 @@ import java.util.Random;
  */
 public class Fichier implements Serializable {
 
-    ArrayList<CorpsCeleste> encyclopedie = null;
+    private ArrayList<CorpsCeleste> encyclopedie = null;
 
     public Fichier(ArrayList encyclopedie) {
         this.encyclopedie = encyclopedie;
     }
 
-    public void ouvertureProgramme() {
+    public ArrayList<CorpsCeleste> ouvertureProgramme() {
         //Regarde si le fichier guide.bin existe
         if (Files.exists(Paths.get("guide.bin"))) {
             //Existe
             try {
                 FileInputStream readBin = new FileInputStream("guide.bin");
                 ObjectInputStream fff = new ObjectInputStream(readBin);
-                encyclopedie = (ArrayList<CorpsCeleste>) fff.readObject();
+                return (ArrayList<CorpsCeleste>) fff.readObject();
             } catch (IOException e) {
                 System.out.println(e);
             } catch (Exception e) {
@@ -127,13 +127,8 @@ public class Fichier implements Serializable {
             } catch (IOException e) {
                 System.out.println(e);
             }
-//            } catch (Exception e) {
-//                //Erreur inconnue
-//                System.out.println("EEEEEEEEE");
-//                System.out.println(e);
-//            }
         }
-
+        return encyclopedie;
     }
 
     public void fermetureProgramme() {
