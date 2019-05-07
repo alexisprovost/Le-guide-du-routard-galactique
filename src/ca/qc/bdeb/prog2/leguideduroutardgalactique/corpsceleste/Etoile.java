@@ -28,14 +28,8 @@ public class Etoile extends CorpsCeleste {
 
     @Override
     public void affichageObjetLier() {
-        System.out.println("\nL'etoile " + nom + " a comme planete(s) liee(s):");
-        if (planetesLier.isEmpty() == false) {
-            for (int i = 0; i < planetesLier.size(); i++) {
-                System.out.println(planetesLier.get(i).getNom());
-                System.out.println("\n");
-            }
-        } else {
-            System.out.println("Il n'y a pas de planete(s) liee(s).");
+        for (int i = 0; i < planetesLier.size(); i++) {
+            planetesLier.get(i).affichage();
         }
     }
 
@@ -45,6 +39,10 @@ public class Etoile extends CorpsCeleste {
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
                 + "Phase: " + phase + "\n"
-                + "Masse: " + masse + "\n");
+                + "Masse: " + masse + "\n"
+                + "Planete(s) liee(s): ");
+        for (int i = 0; i < planetesLier.size(); i++) {
+            System.out.println(planetesLier.get(i).getNom() + " ");
+        }
     }
 }
