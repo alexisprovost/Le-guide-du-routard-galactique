@@ -30,4 +30,5 @@ public class Main {
 To do:
     point ou virgule dans gestion double
 
+    entré de planetes lier -> Quel(s) planete(s) sont liee(s)?
  */
