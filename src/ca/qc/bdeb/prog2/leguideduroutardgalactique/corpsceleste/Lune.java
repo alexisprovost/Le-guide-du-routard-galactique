@@ -16,15 +16,4 @@ public class Lune extends CorpsCeleste {
         super(nom, rayon);
     }
 
-    @Override
-    public String getNom() {
-        return nom;
-    }
-
-    @Override
-    public void affichage() {
-        System.out.println("\nID: " + id + "\n"
-                + "Nom: " + nom + "\n"
-                + "Rayon: " + rayon);
-    }
 }

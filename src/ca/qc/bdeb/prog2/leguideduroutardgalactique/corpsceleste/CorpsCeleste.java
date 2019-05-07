@@ -30,7 +30,27 @@ public abstract class CorpsCeleste implements Serializable {
         return nom;
     }
 
-    public void affichage() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setRayon(double rayon) {
+        this.rayon = rayon;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    @Override
+    public String toString() {
+        return "\nID: " + id + "\n"
+                + "Nom: " + nom + "\n"
+                + "Rayon: " + rayon;
     }
 
     public void affichageObjetLier() {
