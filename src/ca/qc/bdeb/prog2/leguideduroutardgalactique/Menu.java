@@ -44,7 +44,7 @@ public class Menu {
             String reponse = sc.nextLine();
             switch (reponse) {
                 case "1":
-                    consulterEncyclopedie(encyclopedie);
+                    consulterEncyclopedie();
                     break;
                 case "2":
                     nouveauCorpsCeleste();
@@ -202,7 +202,7 @@ public class Menu {
       * Méthode qui affiche l'encyclopedie dans son ensemble
       * @param encyclopedie ArrayList encyclopedie
       */
-    public void consulterEncyclopedie(ArrayList<CorpsCeleste> encyclopedie) {
+    public void consulterEncyclopedie() {
         for (int i = 0; i < encyclopedie.size(); i++) {
             System.out.println(encyclopedie.get(i));
         }
@@ -807,7 +807,7 @@ public class Menu {
         String reponse = sc.nextLine();
         switch (reponse.toLowerCase()) {
             case "oui":
-                fichier.fermetureProgramme();
+                fichier.fermetureProgramme(encyclopedie);
                 System.exit(0);
         }
     }
