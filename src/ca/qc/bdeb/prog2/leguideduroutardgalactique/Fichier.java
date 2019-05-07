@@ -11,9 +11,12 @@ import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.PlaneteTelluriqu
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ import java.util.Random;
  * @author Alexis Provost DA: 1850986
  *
  */
-public class Fichier implements java.io.Serializable {
+public class Fichier implements Serializable {
 
     ArrayList<CorpsCeleste> encyclopedie = null;
 
@@ -37,9 +40,9 @@ public class Fichier implements java.io.Serializable {
         if (Files.exists(Paths.get("guide.bin"))) {
             //Existe
             try {
-                FileInputStream fichier = new FileInputStream("guide.bin");
-                ObjectInputStream ff = new ObjectInputStream(fichier);
-                encyclopedie = (ArrayList<CorpsCeleste>) ff.readObject();
+                FileInputStream readBin = new FileInputStream("guide.bin");
+                ObjectInputStream fff = new ObjectInputStream(readBin);
+                encyclopedie = (ArrayList<CorpsCeleste>) fff.readObject();
             } catch (IOException e) {
                 System.out.println(e);
             } catch (Exception e) {
@@ -134,5 +137,14 @@ public class Fichier implements java.io.Serializable {
     }
 
     public void fermetureProgramme() {
+        try {
+            FileOutputStream fos = new FileOutputStream("guide.bin");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(encyclopedie);
+            oos.flush();
+            oos.close();
+        } catch (java.io.IOException e) {
+            System.out.println("Erreur d'entrées-sorties");
+        }
     }
 }

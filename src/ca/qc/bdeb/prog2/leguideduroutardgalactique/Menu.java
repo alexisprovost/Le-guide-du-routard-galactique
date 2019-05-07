@@ -24,13 +24,13 @@ public class Menu {
 
     private Scanner sc = new Scanner(System.in);
     private ArrayList<CorpsCeleste> encyclopedie = new ArrayList();
+    private Fichier fichier = new Fichier(encyclopedie);
 
     public Menu(ArrayList<CorpsCeleste> encyclopedie) {
         this.encyclopedie = encyclopedie;
     }
 
     public void showMenu() {
-        Fichier fichier = new Fichier(encyclopedie);
         fichier.ouvertureProgramme();
         while (true) {
             System.out.println("\nBienvenue dans le Guide du Routard Galactique\n"
@@ -104,6 +104,11 @@ public class Menu {
         return Double.parseDouble(inputChiffre);
     }
 
+    /**
+     * Gere les erreur d'entrée des booleans
+     * @param toBool Le String que l'on veut convertir en boolean
+     * @return Return le boolean converti
+     */
     public boolean gestionErreurBoolean(String toBool) {
         boolean boucle = true;
         String inputBool = toBool;
@@ -127,6 +132,17 @@ public class Menu {
         return returnValue;
     }
 
+    /**
+     * Méthode qui calcul la compatibilité des corps celetes
+     * @param rayonTellurique Rayon de la planette
+     * @param gravite Force gravitationnel
+     * @param presenceEau Contient elle de l'eau
+     * @param atmosphereCompatible Si l'atmosphere est compatible
+     * @param temperatureMin Temperature minimal
+     * @param temperatureMax Temperature maximal
+     * @param temperatureMoy Temperature moyenne
+     * @return 
+     */
     public double compatibilite(double rayonTellurique, double gravite, boolean presenceEau, boolean atmosphereCompatible, double temperatureMin, double temperatureMax, double temperatureMoy) {
         double pointageFinale = 100;
 
@@ -180,39 +196,19 @@ public class Menu {
         return pointageFinale;
     }
 
+     /**
+      * Méthode qui affiche l'encyclopedie dans son ensemble
+      * @param encyclopedie ArrayList encyclopedie
+      */
     public void consulterEncyclopedie(ArrayList<CorpsCeleste> encyclopedie) {
         for (int i = 0; i < encyclopedie.size(); i++) {
             System.out.println(encyclopedie.get(i));
         }
-//        for (int i = 1; i < encyclopedie.size(); i++) {
-//            CorpsCeleste valeur = encyclopedie.get(i);
-//            int position = i;
-//            while (position > 0 && encyclopedie.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
-//                encyclopedie.set(position, encyclopedie.get(position - 1));
-//                position--;
-//            }
-//            encyclopedie.set(position, valeur);
-//        }
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            encyclopedie.get(i).affichage();
-//            System.out.println("\n");
-//        }
-//        Stack<CorpsCeleste> stack = new Stack();
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            stack.push(encyclopedie.get(i));
-//        }
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            stack.pop().affichage();
-//            System.out.println("\n");
-//        }
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            if (encyclopedie.get(i) instanceof PlaneteTellurique) {
-//                encyclopedie.get(i).affichage();
-//                System.out.println("\n");
-//            }
-//        }
     }
 
+     /**
+     * Méthode qui gère le menu de création des corps celeste en général
+     */
     public void nouveauCorpsCeleste() {
         System.out.println("\nBienvenue dans la partie d'ajout de Corps Celeste\n"
                 + "Veillez indiquer quel type de corps celeste voulez-vous rajouter?\n"
@@ -242,6 +238,9 @@ public class Menu {
         }
     }
 
+     /**
+     * Méthode qui gère la création des Étoiles
+     */
     public void nouvelleEtoile() {
         ArrayList<CorpsCeleste> planetesLiees = new ArrayList();
 
@@ -270,6 +269,9 @@ public class Menu {
         encyclopedie.add(new Etoile(nom, rayon, planetesLiees, phase, masse));
     }
 
+     /**
+     * Méthode qui gère la création des Lunes
+     */
     public void nouvelleLune() {
         System.out.println("\nQuel est son nom?");
         String nom = sc.nextLine();
@@ -278,6 +280,9 @@ public class Menu {
         encyclopedie.add(new Lune(nom, rayon));
     }
 
+     /**
+     * Méthode qui gère la création des Planetes Gazeuse
+     */
     public void nouvellePlaneteGazeuse() {
         System.out.println("\nQuel est son nom?");
         String nom = sc.nextLine();
@@ -292,6 +297,9 @@ public class Menu {
         encyclopedie.add(new PlaneteGazeuse(nom, rayon, atmosphere, presenceDeVie, anneaux));
     }
 
+     /**
+     * Méthode qui gère la création des Planetes Naine
+     */
     public void nouvellePlanetNaine() {
         System.out.println("\nQuel est son nom?");
         String nom = sc.nextLine();
@@ -315,6 +323,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Méthode qui gère la création des Planetes Tellurique
+     */
     public void nouvellePlaneteTellurique() {
 
         ArrayList<Lune> lunesLiees = new ArrayList();
@@ -354,6 +365,10 @@ public class Menu {
         encyclopedie.add(new PlaneteTellurique(nom, rayon, lunesLiees, atmosphere, presenceDeVie, presenceDeVie, gravite, tempMin, tempMax, compatibilite));
     }
 
+    /**
+     * Méthode qui gère la suppression des Corps celeste
+     * @param id l'ID d'un corps celeste que l'on veut supprimer
+     */
     public void supressionCorpsCeleste(int id) {
         int searchId;
         int pos = -1;
@@ -367,6 +382,10 @@ public class Menu {
         encyclopedie.remove(pos);
     }
 
+    /**
+     * Méthode qui gère les modification des corps celeste en général
+     * @param id l'ID d'un corps celeste que l'on veut modifier
+     */
     public void modificationCorpsCeleste(int id) {
         int searchId;
         int pos = -1;
@@ -402,10 +421,18 @@ public class Menu {
         /* Modification pour chaque type de corps celeste selon leur attributs */
     }
 
+    /**
+     * Méthode qui affiche n'importe quel corps celeste
+     * @param id l'ID d'un corps que l'on veut afficher
+     */
     public void afficherUnCorpsCeleste(int id) {
         System.out.println(encyclopedie.get(id));
     }
 
+    /**
+     * Méthode qui gère les modification des Planetes Tellurique
+     * @param id l'ID d'une Planetes Tellurique que l'on veut modifier
+     */
     public void modificationPlaneteTellurique(int id) {
         System.out.print("\nNom: ");
         String nom = sc.nextLine();
@@ -442,6 +469,10 @@ public class Menu {
         ((PlaneteTellurique) encyclopedie.get(id)).rafraichirTemperatureMoyenne();
     }
 
+    /**
+     * Méthode qui gère les modification des Planètes Gazeuse
+     * @param id l'ID d'une Planetes Naines que l'on veut modifier
+     */
     public void modificationPlaneteGazeuse(int id) {
         System.out.print("\nNom: ");
         String nom = sc.nextLine();
@@ -465,6 +496,10 @@ public class Menu {
         ((PlaneteGazeuse) encyclopedie.get(id)).setAtmosphereCompatible(atmosphereComp);
     }
 
+    /**
+     * Méthode qui gère les modification des Planetes Naines
+     * @param id l'ID d'une Planetes Naines que l'on veut modifier
+     */
     public void modificationPlaneteNaine(int id) {
         System.out.print("\nNom: ");
         String nom = sc.nextLine();
@@ -493,6 +528,10 @@ public class Menu {
         encyclopedie.get(id).setRayon(rayon);
     }
 
+    /**
+     * Méthode qui gère les modification des Étoiles
+     * @param id l'ID d'une étoile que l'on veut modifier
+     */
     public void modificationEtoile(int id) {
         ArrayList<CorpsCeleste> planetesLiees = new ArrayList();
 
@@ -530,6 +569,10 @@ public class Menu {
         ((Etoile) encyclopedie.get(id)).setPlanetesLier(planetesLiees);
     }
 
+    /**
+     * Méthode qui gère les modification des lunes
+     * @param id l'ID d'une lune qu'on veut modifier
+     */
     public void modificationLune(int id) {
         System.out.print("\nNom: ");
         String nom = sc.nextLine();
@@ -541,6 +584,10 @@ public class Menu {
         encyclopedie.get(id).setRayon(rayon);
     }
 
+    
+    /**
+     * Méthode qui modifie les corps celestes
+     */
     public void modifierCorpsCeleste() {
         boolean premiereBoucle = true;
         while (premiereBoucle) {
@@ -703,6 +750,9 @@ public class Menu {
 
     }
 
+    /**
+     * Méthode qui affiche le menu statistiques
+     */
     public void statistique() {
         System.out.println("\n(1) Nombre d'entrees saisies pour chaque type de corps celeste"
                 + "\n(2) Afficher pour chaque etoile leur(s) planete(s) associee(s)"
@@ -747,11 +797,16 @@ public class Menu {
         }
     }
 
+    
+    /**
+     * Méthode qui quitte le programme
+     */
     public void quitter() {
         System.out.println("\nVoulez-vous vraiment quitter cette environnement de plaisir? Oui ou Non");
         String reponse = sc.nextLine();
         switch (reponse.toLowerCase()) {
             case "oui":
+                fichier.fermetureProgramme();
                 System.exit(0);
         }
     }

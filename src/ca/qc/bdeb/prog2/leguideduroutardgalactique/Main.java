@@ -31,4 +31,6 @@ To do:
     point ou virgule dans gestion double
 
     entré de planetes lier -> Quel(s) planete(s) sont liee(s)?
+
+Voulez-vous voir une autre liste? (O/N) ou 0  -> crash
  */
