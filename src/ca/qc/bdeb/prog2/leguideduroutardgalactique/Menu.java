@@ -186,36 +186,65 @@ public class Menu {
     }
 
     public void consulterEncyclopedie(ArrayList<CorpsCeleste> encyclopedie) {
-        for (int i = 0; i < encyclopedie.size(); i++) {
-            encyclopedie.get(i).affichage();
+        while (true) {
+            System.out.println("\n(1) Afficher par ordre alphabetique"
+                    + "\n(2) Afficher les planetes telluriques par ordre decroissant de probabilite"
+                    + "\n(3) Afficher la(les) planete(s) et sa(leurs) lune(s) pour une etoile"
+                    + "\n(4) Quitter");
+            switch (sc.nextLine()) {
+                case "1":
+                    for (int i = 1; i < encyclopedie.size(); i++) {
+                        CorpsCeleste valeur = encyclopedie.get(i);
+                        int position = i;
+                        while (position > 0 && encyclopedie.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
+                            encyclopedie.set(position, encyclopedie.get(position - 1));
+                            position--;
+                        }
+                        encyclopedie.set(position, valeur);
+                    }
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        encyclopedie.get(i).affichage();
+                        System.out.println("\n");
+                    }
+                    Stack<CorpsCeleste> stack = new Stack();
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        stack.push(encyclopedie.get(i));
+                    }
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        stack.pop().affichage();
+                        System.out.println("\n");
+                    }
+                    break;
+                case "2":
+                    // A faire trie a bulle or plutot roche
+                    break;
+                case "3":
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        if (encyclopedie.get(i) instanceof Etoile) {
+                            encyclopedie.get(i).affichage();
+                        }
+                    }
+                    int trouver = -1;
+                    while (true) {
+                        System.out.println("\nRentrer le id de l'etoile pour afficher ses planetes relier eet leurs lunes");
+                        for (int i = 0; i < encyclopedie.size(); i++) {
+                            if (sc.nextLine().equals(encyclopedie.get(i).getId())) {
+                                trouver = i;
+                            }
+                        }
+                        if (trouver != -1) {
+                            encyclopedie.get(trouver).affichage();
+                            return;
+                        } else {
+                            System.out.println("Pas possible de trouver cette etoile");
+                        }
+                    }
+                case "4":
+                    return;
+                default:
+                    System.out.println("Une erreur s'est produite, recommencer");
+            }
         }
-//        for (int i = 1; i < encyclopedie.size(); i++) {
-//            CorpsCeleste valeur = encyclopedie.get(i);
-//            int position = i;
-//            while (position > 0 && encyclopedie.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
-//                encyclopedie.set(position, encyclopedie.get(position - 1));
-//                position--;
-//            }
-//            encyclopedie.set(position, valeur);
-//        }
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            encyclopedie.get(i).affichage();
-//            System.out.println("\n");
-//        }
-//        Stack<CorpsCeleste> stack = new Stack();
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            stack.push(encyclopedie.get(i));
-//        }
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            stack.pop().affichage();
-//            System.out.println("\n");
-//        }
-//        for (int i = 0; i < encyclopedie.size(); i++) {
-//            if (encyclopedie.get(i) instanceof PlaneteTellurique) {
-//                encyclopedie.get(i).affichage();
-//                System.out.println("\n");
-//            }
-//        }
     }
 
     public void nouveauCorpsCeleste() {
@@ -323,7 +352,7 @@ public class Menu {
         String nom = sc.nextLine();
         System.out.println("\nQuel est le rayon de l'astre?");
         double rayon = gestionErreurDouble(0, Double.POSITIVE_INFINITY, sc.nextLine());
-        System.out.println("\nQuel(s) lune(s) sont liee(s)? Separer par les avec des ';' Fou s'il y en a pas ecrivez rien.");
+        System.out.println("\nQuel(s) lune(s) sont liee(s)? Separer par les avec des ';' ou s'il y en a pas ecrivez rien.");
         String lunesLieesString = sc.nextLine();
         if (!lunesLieesString.equals("")) {
             String[] array = lunesLieesString.split(";");
@@ -346,7 +375,7 @@ public class Menu {
         System.out.println("\nQuel est la temperature minimale?");
         double tempMin = gestionErreurDouble(-546.15, Double.POSITIVE_INFINITY, sc.nextLine());
         System.out.println("\nQuel est la temperature maximale?");
-        double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());      
+        double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());
         double tempMoy = (tempMax - tempMin) / 2;
         double compatibilite = compatibilite(rayon, gravite, presenceDeVie, atmosphere, tempMin, tempMax, tempMoy);
         encyclopedie.add(new PlaneteTellurique(nom, rayon, lunesLiees, atmosphere, presenceDeVie, presenceDeVie, gravite, tempMin, tempMax, tempMoy, compatibilite));
@@ -423,46 +452,58 @@ public class Menu {
     }
 
     public void statistique() {
-        System.out.println("\n(1) Nombre d'entrees saisies pour chaque type de corps celeste"
-                + "\n(2) Afficher pour chaque etoile leur(s) planete(s) associee(s)"
-                + "\n(3) Afficher pour chaque planete leur(s) lune(s) associee(s)");
-        String reponse = sc.nextLine();
-        switch (reponse) {
-            case "1":
-                int nbrEtoile = 0,
-                 nbrLune = 0,
-                 nbrPlaneteGazeuse = 0,
-                 nbrePlaneteNaine = 0,
-                 nbrPlaneteTellurique = 0;
-                for (int i = 0; i < encyclopedie.size(); i++) {
-                    if (encyclopedie.get(i) instanceof Etoile) {
-                        nbrEtoile++;
-                    } else if (encyclopedie.get(i) instanceof Lune) {
-                        nbrLune++;
-                    } else if (encyclopedie.get(i) instanceof PlaneteGazeuse) {
-                        nbrPlaneteGazeuse++;
-                    } else if (encyclopedie.get(i) instanceof PlaneteNaine) {
-                        nbrePlaneteNaine++;
-                    } else if (encyclopedie.get(i) instanceof PlaneteTellurique) {
-                        nbrPlaneteTellurique++;
+        while (true) {
+            System.out.println("\n(1) Nombre d'entrees saisies pour chaque type de corps celeste"
+                    + "\n(2) Afficher pour chaque etoile leur(s) planete(s) associee(s)"
+                    + "\n(3) Afficher pour chaque planete leur(s) lune(s) associee(s)"
+                    + "\n(4) Quitter");
+            String reponse = sc.nextLine();
+            switch (reponse) {
+                case "1":
+                    int nbrEtoile = 0,
+                     nbrLune = 0,
+                     nbrPlaneteGazeuse = 0,
+                     nbrePlaneteNaine = 0,
+                     nbrPlaneteTellurique = 0;
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        if (encyclopedie.get(i) instanceof Etoile) {
+                            nbrEtoile++;
+                        } else if (encyclopedie.get(i) instanceof Lune) {
+                            nbrLune++;
+                        } else if (encyclopedie.get(i) instanceof PlaneteGazeuse) {
+                            nbrPlaneteGazeuse++;
+                        } else if (encyclopedie.get(i) instanceof PlaneteNaine) {
+                            nbrePlaneteNaine++;
+                        } else if (encyclopedie.get(i) instanceof PlaneteTellurique) {
+                            nbrPlaneteTellurique++;
+                        }
                     }
-                }
-                System.out.println("\nIl y a " + nbrEtoile + " etoile(s)"
-                        + "\nIl y a " + nbrLune + " lune(s)"
-                        + "\nIl y a " + nbrPlaneteGazeuse + " planete(s) gazeuse(s)"
-                        + "\nIl y a " + nbrePlaneteNaine + " planete(s) naine(s)"
-                        + "\nIl y a " + nbrPlaneteTellurique + " planete(s) tellurique(s)");
-                break;
-            case "2":
-                for (int i = 0; i < encyclopedie.size(); i++) {
-                    if (encyclopedie.get(i) instanceof Etoile) {
-                        encyclopedie.get(i).affichage();
+                    System.out.println("\nIl y a " + nbrEtoile + " etoile(s)"
+                            + "\nIl y a " + nbrLune + " lune(s)"
+                            + "\nIl y a " + nbrPlaneteGazeuse + " planete(s) gazeuse(s)"
+                            + "\nIl y a " + nbrePlaneteNaine + " planete(s) naine(s)"
+                            + "\nIl y a " + nbrPlaneteTellurique + " planete(s) tellurique(s)");
+                    break;
+                case "2":
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        if (encyclopedie.get(i) instanceof Etoile) {
+                            encyclopedie.get(i).affichage();
+                        }
                     }
-                }
-                break;
-            case "3":
-                break;
-            default:
+                    break;
+                case "3":
+                    for (int i = 0; i < encyclopedie.size(); i++) {
+                        if (encyclopedie.get(i) instanceof PlaneteTellurique /*|| encyclopedie.get(i) instanceof PlaneteNaine || encyclopedie.get(i) instanceof PlaneteGazeuse*/) {
+                            encyclopedie.get(i).affichage();
+                            encyclopedie.get(i).affichageObjetLier();
+                            
+                        }
+                    }
+                    break;
+                case "4":
+                    return;
+                default:
+            }
         }
     }
 
