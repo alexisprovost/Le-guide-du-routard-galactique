@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -569,6 +570,7 @@ public class Menu {
         ((Etoile) encyclopedie.get(id)).setPlanetesLier(planetesLiees);
     }
 
+ 
     /**
      * Méthode qui gère les modification des lunes
      * @param id l'ID d'une lune qu'on veut modifier
@@ -583,6 +585,7 @@ public class Menu {
         encyclopedie.get(id).setNom(nom);
         encyclopedie.get(id).setRayon(rayon);
     }
+
 
     
     /**

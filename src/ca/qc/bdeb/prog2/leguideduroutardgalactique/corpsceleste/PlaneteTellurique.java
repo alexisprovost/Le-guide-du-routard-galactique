@@ -59,7 +59,7 @@ public class PlaneteTellurique extends CorpsCeleste {
     public void rafraichirTemperatureMoyenne(){
        temperatureMoy = (temperatureMin + temperatureMax)/2; 
     }
-    
+   
     @Override
     public void affichageObjetLier() {
     }
@@ -74,7 +74,6 @@ public class PlaneteTellurique extends CorpsCeleste {
                 + "Gravite: " + gravite + "\n"
                 + "Atmosphere compatible: " + atmosphereCompatible + "\n"
                 + "Temperature: " + temperatureMin + "°C a " + temperatureMax + "°C, " + temperatureMoy + "°C en moyenne\n"
-                // en constrution         + "Lune(s) associees: " + +"\n"
                 + "Pointage de compatibilite: " + pointageCompatibilite;
     }
 }
