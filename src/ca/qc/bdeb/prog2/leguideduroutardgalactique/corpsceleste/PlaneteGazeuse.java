@@ -23,13 +23,25 @@ public class PlaneteGazeuse extends CorpsCeleste {
         this.anneau = anneau;
     }
 
+    public void setPresenceVie(boolean presenceVie) {
+        this.presenceVie = presenceVie;
+    }
+
+    public void setAtmosphereCompatible(boolean atmosphereCompatible) {
+        this.atmosphereCompatible = atmosphereCompatible;
+    }
+
+    public void setAnneau(boolean anneau) {
+        this.anneau = anneau;
+    }
+    
     @Override
-    public void affichage() {
-        System.out.println("\nID: " + id + "\n"
+    public String toString() {
+        return "\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
                 + "Presence de vie: " + presenceVie + "\n"
                 + "Atmosphere compatible: " + atmosphereCompatible + "\n"
-                + "Presence d'anneau(x):" + anneau + "\n");
+                + "Presence d'anneau(x):" + anneau + "\n";
     }
 }

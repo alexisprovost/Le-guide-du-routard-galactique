@@ -19,7 +19,7 @@ public class PlaneteTellurique extends CorpsCeleste {
     protected boolean presenceEau, presenceVie, atmosphereCompatible;
     protected ArrayList<Lune> lunes = null;
 
-    public PlaneteTellurique(String nom, double rayon, ArrayList<Lune> lunes, boolean atmosphereCompatible, boolean presenceVie, boolean presenceEau, double gravite, double temperatureMin, double temperatureMax, double temperatureMoy, double pointageCompatibilite) {
+    public PlaneteTellurique(String nom, double rayon, ArrayList<Lune> lunes, boolean atmosphereCompatible, boolean presenceVie, boolean presenceEau, double gravite, double temperatureMin, double temperatureMax, double pointageCompatibilite) {
         super(nom, rayon);
         this.lunes = lunes;
         this.atmosphereCompatible = atmosphereCompatible;
@@ -28,17 +28,41 @@ public class PlaneteTellurique extends CorpsCeleste {
         this.gravite = gravite;
         this.temperatureMin = temperatureMin;
         this.temperatureMax = temperatureMax;
-        this.temperatureMoy = temperatureMoy;
+        temperatureMoy = (temperatureMin + temperatureMax)/2;
         this.pointageCompatibilite = pointageCompatibilite;
     }
 
-    @Override
-    public void affichageObjetLier() {
+    public void setPresenceEau(boolean presenceEau) {
+        this.presenceEau = presenceEau;
+    }
+
+    public void setPresenceVie(boolean presenceVie) {
+        this.presenceVie = presenceVie;
+    }
+
+    public void setGravite(double gravite) {
+        this.gravite = gravite;
+    }
+
+    public void setAtmosphereCompatible(boolean atmosphereCompatible) {
+        this.atmosphereCompatible = atmosphereCompatible;
+    }
+
+    public void setTemperatureMax(double temperatureMax) {
+        this.temperatureMax = temperatureMax;
+    }
+
+    public void setTemperatureMin(double temperatureMin) {
+        this.temperatureMin = temperatureMin;
+    }
+    
+    public void rafraichirTemperatureMoyenne(){
+       temperatureMoy = (temperatureMin + temperatureMax)/2; 
     }
 
     @Override
-    public void affichage() {
-        System.out.println("\nID: " + id + "\n"
+    public String toString() {
+        return "\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
                 + "Presence d'eau: " + presenceEau + "\n"
@@ -46,7 +70,6 @@ public class PlaneteTellurique extends CorpsCeleste {
                 + "Gravite: " + gravite + "\n"
                 + "Atmosphere compatible: " + atmosphereCompatible + "\n"
                 + "Temperature: " + temperatureMin + "°C a " + temperatureMax + "°C, " + temperatureMoy + "°C en moyenne\n"
-                // en constrution         + "Lune(s) associees: " + +"\n"
-                + "Pointage de compatibilite: " + pointageCompatibilite);
+                + "Pointage de compatibilite: " + pointageCompatibilite;
     }
 }

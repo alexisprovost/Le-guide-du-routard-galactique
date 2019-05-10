@@ -28,11 +28,15 @@ public class PlaneteNaine extends CorpsCeleste {
         this.typeDeNaine = typeDeNaine;
     }
 
+    public void setTypeDeNaine(Sorte typeDeNaine) {
+        this.typeDeNaine = typeDeNaine;
+    }
+    
     @Override
-    public void affichage() {
-        System.out.println("\nID: " + id + "\n"
+    public String toString() {
+        return "\nID: " + id + "\n"
                 + "Nom: " + nom + "\n"
                 + "Rayon: " + rayon + "\n"
-                + "Type de Naine: " + typeDeNaine + "\n");
+                + "Type de Naine: " + typeDeNaine + "\n";
     }
 }

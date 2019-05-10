@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique;
 
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.CorpsCeleste;
@@ -11,23 +6,28 @@ import java.util.ArrayList;
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
- *
  */
 public class Main {
 
     /**
-     * @param args the command line arguments
+     * TP2 - Le guide du routard galactique
+     *
+     * @param args Java Args
      */
     public static void main(String[] args) {
         ArrayList<CorpsCeleste> encyclopedie = new ArrayList<>();
-        Menu menu = new Menu(encyclopedie);
+        Fichier fichier = new Fichier();
+        Menu menu = new Menu(encyclopedie, fichier);
+
         menu.showMenu();
     }
 }
 
 /*
-
 To do:
-    point ou virgule dans gestion double
-
+    compatibilité dans l'objet
+    Ordre alphabetique
+    Ordonner les pointages de compatibilité
+    Afficher les lunes & planetes
+    Probleme ID
  */

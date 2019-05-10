@@ -5,8 +5,6 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
-import java.io.Serializable;
-
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
@@ -18,10 +16,4 @@ public class Lune extends CorpsCeleste {
         super(nom, rayon);
     }
 
-    @Override
-    public void affichage() {
-        System.out.println("\nID: " + id + "\n"
-                + "Nom: " + nom + "\n"
-                + "Rayon: " + rayon);
-    }
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique;
 
 import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.CorpsCeleste;
@@ -11,9 +6,12 @@ import ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste.PlaneteTelluriqu
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -22,24 +20,30 @@ import java.util.Random;
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
  * @author Alexis Provost DA: 1850986
- *
  */
-public class Fichier implements java.io.Serializable {
+public class Fichier implements Serializable {
 
-    ArrayList<CorpsCeleste> encyclopedie = null;
+    private String nomFichier = "guide.bin";
 
-    public Fichier(ArrayList encyclopedie) {
-        this.encyclopedie = encyclopedie;
+    public Fichier() {
+       
     }
 
-    public void ouvertureProgramme() {
+    /**
+     * Méthode qui lis les donnée du fichier csv ou bin
+     * @return Les données du fichier csv ou bin
+     */
+    public ArrayList<CorpsCeleste> ouvertureProgramme() {
         //Regarde si le fichier guide.bin existe
-        if (Files.exists(Paths.get("guide.bin"))) {
+        ArrayList<CorpsCeleste> encyclopedie = new ArrayList<CorpsCeleste>();
+        
+        if (Files.exists(Paths.get(nomFichier))) {
             //Existe
             try {
-                FileInputStream fichier = new FileInputStream("guide.bin");
-                ObjectInputStream ff = new ObjectInputStream(fichier);
-                encyclopedie = (ArrayList<CorpsCeleste>) ff.readObject();
+                FileInputStream readBin = new FileInputStream(nomFichier);
+                ObjectInputStream fff = new ObjectInputStream(readBin);
+                encyclopedie = (ArrayList<CorpsCeleste>) fff.readObject();
+                return encyclopedie;
             } catch (IOException e) {
                 System.out.println(e);
             } catch (Exception e) {
@@ -111,7 +115,6 @@ public class Fichier implements java.io.Serializable {
                                         Double.parseDouble(array[4]),
                                         Double.parseDouble(array[8]),
                                         Double.parseDouble(array[6]),
-                                        Double.parseDouble(array[7]),
                                         Double.parseDouble(array[17])));
                             } catch (NumberFormatException e) {
                                 System.out.println(e);
@@ -125,15 +128,23 @@ public class Fichier implements java.io.Serializable {
             } catch (IOException e) {
                 System.out.println(e);
             }
-//            } catch (Exception e) {
-//                //Erreur inconnue
-//                System.out.println("EEEEEEEEE");
-//                System.out.println(e);
-//            }
         }
-
+        return encyclopedie;
     }
 
-    public void fermetureProgramme() {
+    /**
+     * Méthode qui Enregistre les données de l'encyclopedie
+     * @param encyclopedie les données de l'encyclopedie
+     */
+    public void fermetureProgramme(ArrayList<CorpsCeleste> encyclopedie) {
+        try {
+            FileOutputStream fos = new FileOutputStream(nomFichier);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(encyclopedie);
+            oos.flush();
+            oos.close();
+        } catch (java.io.IOException e) {
+            System.out.println("Erreur d'entrées-sorties");
+        }
     }
 }
