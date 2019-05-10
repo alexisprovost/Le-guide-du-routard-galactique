@@ -25,18 +25,22 @@ public class Fichier implements Serializable {
 
     private String nomFichier = "guide.bin";
 
+    /**
+     * Constructeur vide Fichier
+     */
     public Fichier() {
-       
+
     }
 
     /**
      * Méthode qui lis les donnée du fichier csv ou bin
+     *
      * @return Les données du fichier csv ou bin
      */
     public ArrayList<CorpsCeleste> ouvertureProgramme() {
         //Regarde si le fichier guide.bin existe
         ArrayList<CorpsCeleste> encyclopedie = new ArrayList<CorpsCeleste>();
-        
+
         if (Files.exists(Paths.get(nomFichier))) {
             //Existe
             try {
@@ -71,23 +75,29 @@ public class Fichier implements Serializable {
                             array[6] = array[6].replace(',', '.');
                             array[8] = array[8].replace(',', '.');
                             array[7] = array[7].replace(',', '.');
-                            array[17] = array[17].replace(',', '.');
-                            array[17] = array[17].replace('%', ' ');
                             //Replace Oui with true
 
-                            if (array[5] == "oui") {
+                            if (array[5].equals("oui")) {
                                 array[5] = "true";
-                            } else if (array[5] == "non") {
+                            } 
+                            
+                            if (array[5].equals("non")) {
                                 array[5] = "false";
                             }
-                            if (array[2] == "oui") {
+                            
+                            if (array[2].equals("oui")) {
                                 array[2] = "true";
-                            } else if (array[2] == "non") {
+                            } 
+                            
+                            if (array[2].equals("non")) {
                                 array[2] = "false";
                             }
-                            if (array[3] == "oui") {
+                            
+                            if (array[3].equals("oui")) {
                                 array[3] = "true";
-                            } else if (array[3] == "non") {
+                            } 
+                            
+                            if (array[3].equals("non")) {
                                 array[3] = "false";
                             }
                             // Ajoute le(s) lune(s)
@@ -114,8 +124,7 @@ public class Fichier implements Serializable {
                                         Boolean.parseBoolean(array[3]),
                                         Double.parseDouble(array[4]),
                                         Double.parseDouble(array[8]),
-                                        Double.parseDouble(array[6]),
-                                        Double.parseDouble(array[17])));
+                                        Double.parseDouble(array[6])));
                             } catch (NumberFormatException e) {
                                 System.out.println(e);
                             }
@@ -134,6 +143,7 @@ public class Fichier implements Serializable {
 
     /**
      * Méthode qui Enregistre les données de l'encyclopedie
+     *
      * @param encyclopedie les données de l'encyclopedie
      */
     public void fermetureProgramme(ArrayList<CorpsCeleste> encyclopedie) {

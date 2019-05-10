@@ -5,7 +5,6 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
-import java.io.Serializable;
 
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
@@ -23,15 +22,29 @@ public class PlaneteNaine extends CorpsCeleste {
         AUTRE
     }
 
+    /**
+     * COnstructeur planete naine
+     * @param nom nom planete naine
+     * @param rayon rayon planete naine
+     * @param typeDeNaine typeDeNaine planete naine 
+     */
     public PlaneteNaine(String nom, double rayon, Sorte typeDeNaine) {
         super(nom, rayon);
         this.typeDeNaine = typeDeNaine;
     }
 
+    /**
+     * Setter typeDeNaine 
+     * @param typeDeNaine typeDeNaine 
+     */
     public void setTypeDeNaine(Sorte typeDeNaine) {
         this.typeDeNaine = typeDeNaine;
     }
     
+    /**
+     * To string    
+     * @return Affichage planete naine
+     */
     @Override
     public String toString() {
         return "\nID: " + id + "\n"

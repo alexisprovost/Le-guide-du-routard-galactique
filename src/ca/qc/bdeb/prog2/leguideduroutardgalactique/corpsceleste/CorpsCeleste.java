@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public abstract class CorpsCeleste implements Serializable {
 
-    private static int idSequentiel = 1;
+    public static int idSequentiel = 1;
 
     protected String nom;
     protected int id;
@@ -17,6 +17,7 @@ public abstract class CorpsCeleste implements Serializable {
 
     /**
      * Constructeur Corps Celeste
+     *
      * @param nom Nom du corps celeste
      * @param rayon rayon du corps celeste
      */
@@ -27,7 +28,16 @@ public abstract class CorpsCeleste implements Serializable {
     }
 
     /**
+     * Id setter
+     * @param idSequentiel Unique id
+     */
+    public static void setIdSequentiel(int idSequentiel) {
+        CorpsCeleste.idSequentiel = idSequentiel;
+    }
+
+    /**
      * Getter nom
+     *
      * @return nom
      */
     public String getNom() {
@@ -36,6 +46,7 @@ public abstract class CorpsCeleste implements Serializable {
 
     /**
      * getter ID
+     *
      * @return ID
      */
     public int getId() {
@@ -44,6 +55,7 @@ public abstract class CorpsCeleste implements Serializable {
 
     /**
      * Setter ID
+     *
      * @param id ID
      */
     public void setId(int id) {
@@ -52,7 +64,8 @@ public abstract class CorpsCeleste implements Serializable {
 
     /**
      * Setter rayon
-     * @param rayon Rayon 
+     *
+     * @param rayon Rayon
      */
     public void setRayon(double rayon) {
         this.rayon = rayon;
@@ -60,6 +73,7 @@ public abstract class CorpsCeleste implements Serializable {
 
     /**
      * Setter nom
+     *
      * @param nom Nom
      */
     public void setNom(String nom) {
@@ -68,6 +82,7 @@ public abstract class CorpsCeleste implements Serializable {
 
     /**
      * To String utilisé par lune
+     *
      * @return Valeurs a afficher
      */
     @Override
