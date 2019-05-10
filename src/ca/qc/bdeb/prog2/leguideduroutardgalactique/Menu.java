@@ -37,8 +37,9 @@ public class Menu {
      */
     public void showMenu() {
         encyclopedie = fichier.ouvertureProgramme();
+        CorpsCeleste.setIdSequentiel(encyclopedie.size() + 1);
         while (true) {
-            bubbleSort();
+            //bubbleSort();      
             System.out.println("\nBienvenue dans le Guide du Routard Galactique\n"
                     + "\t1- Consulter l'encyclopedie\n"
                     + "\t2- Créer un nouveau corps celeste\n"
@@ -156,89 +157,53 @@ public class Menu {
     }
 
     /**
-     * Méthode qui calcul la compatibilité des corps celetes
-     *
-     * @param rayonTellurique Rayon de la planette
-     * @param gravite Force gravitationnel
-     * @param presenceEau Contient elle de l'eau
-     * @param atmosphereCompatible Si l'atmosphere est compatible
-     * @param temperatureMin Temperature minimal
-     * @param temperatureMax Temperature maximal
-     * @param temperatureMoy Temperature moyenne
-     * @return
-     */
-    public double compatibilite(double rayonTellurique, double gravite, boolean presenceEau, boolean atmosphereCompatible, double temperatureMin, double temperatureMax, double temperatureMoy) {
-        double pointageFinale = 100;
-
-        // rayon
-        double rayonTerre = 6378.14;
-        double rayonCompa = (rayonTellurique * 100) / rayonTerre;
-        int differenceRayon = Math.abs((int) (100 - rayonCompa) / 10);
-        pointageFinale -= (1 * differenceRayon);
-
-        // gravite
-        double graviteTerre = 1;
-        double graviteCompa = (gravite * 100) / graviteTerre;
-        int differenceGravite = Math.abs((int) (100 - graviteCompa) / 20);
-        pointageFinale -= (1 * differenceGravite);
-
-        // eau
-        if (presenceEau = false) {
-            pointageFinale -= 10;
-        }
-
-        // atmosphere
-        if (atmosphereCompatible = false) {
-            pointageFinale -= 10;
-        }
-
-        // temperature minimale
-        double tempMinTerre = -93.20;
-        double tempMinCompa = (temperatureMin * 100) / tempMinTerre;
-        if (tempMinCompa < 0) {
-            int sous = Math.abs((int) (100 - tempMinCompa) / 10);
-            pointageFinale -= (1 * sous);
-        }
-
-        // temperature maximale
-        double tempMaxTerre = 56.70;
-        double tempMaxCompa = (temperatureMax * 100) / tempMaxTerre;
-        if (tempMaxCompa > 0) {
-            int audessus = Math.abs((int) (100 - tempMaxCompa) / 10);
-            pointageFinale -= (1 * audessus);
-        }
-
-        // temperature moyenne
-        double tempMoyTerre = 15;
-        double tempMoyCompa = (temperatureMoy * 100) / tempMoyTerre;
-        int difference = Math.abs((int) (100 - tempMoyCompa) / 10);
-        pointageFinale -= (1 * difference);
-        return pointageFinale;
-    }
-
-    /**
      * Bubble sort encyclopédie
      */
     private void bubbleSort() {
-        ArrayList<CorpsCeleste> tempList = (ArrayList<CorpsCeleste>) this.encyclopedie;
-        int size = encyclopedie.size();
+        ArrayList<PlaneteTellurique> tempList = new ArrayList();
+        for (int i = 0; i < encyclopedie.size(); i++) {
+            if (encyclopedie.get(i) instanceof PlaneteTellurique) {
+                tempList.add((PlaneteTellurique) encyclopedie.get(i));
+            }
+        }
+        int size = tempList.size();
         int counter = size;
-        CorpsCeleste p, p2;
+        PlaneteTellurique p, p2;
         do {
-
             for (int i = 0; i < size - 1; i++) {
-
-                if (encyclopedie.get(i).getId() > encyclopedie.get(i + 1).getId()) {
-
-                    p = encyclopedie.get(i + 1);
-                    p2 = encyclopedie.get(i);
-                    encyclopedie.set(i, p);
-                    encyclopedie.set(i + 1, p2);
-
+                if (tempList.get(i).getPointageCompatibilite() > tempList.get(i + 1).getPointageCompatibilite()) {
+                    p = tempList.get(i + 1);
+                    p2 = tempList.get(i);
+                    tempList.set(i, p);
+                    tempList.set(i + 1, p2);
                 }
             }
             size = size - 1;
         } while (size != 1);
+
+        for (int i = tempList.size() - 1; i >= 0; i--) {
+            System.out.println(tempList.get(i));
+        }
+    }
+
+    /**
+     * Trie par insertion encyclopedie
+     */
+    public void insertionSort() {
+        for (int i = 1; i < encyclopedie.size(); i++) {
+            CorpsCeleste valeur = encyclopedie.get(i);
+            int position = i;
+            while (position > 0 && encyclopedie.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
+                encyclopedie.set(position, encyclopedie.get(position - 1));
+                position--;
+            }
+            encyclopedie.set(position, valeur);
+        }
+        for (int k = 0; k < encyclopedie.size(); k++) {
+            System.out.println(encyclopedie.get(k));
+            System.out.println("\n");
+        }
+
     }
 
     /**
@@ -249,23 +214,11 @@ public class Menu {
     public void consulterEncyclopedie() {
         System.out.println("\n(1) Afficher en ordre alphabetique et non alphabetique\n"
                 + "(2) Afficher planete(s) tellurique(s) en ordre decroissant de compatibilite\n"
-                + "(3) Afficher la(les) planete(s) et leur(s) lune(s) associer avec la planete choisi\n"
+                + "(3) Afficher la(les) planete(s) et leur(s) lune(s) associer avec une etoile choisi\n"
                 + "(4) Quitter");
         switch (sc.nextLine()) {
             case "1":
-                for (int i = 1; i < encyclopedie.size(); i++) {
-                    CorpsCeleste valeur = encyclopedie.get(i);
-                    int position = i;
-                    while (position > 0 && encyclopedie.get(position - 1).getNom().compareTo(valeur.getNom()) > 0) {
-                        encyclopedie.set(position, encyclopedie.get(position - 1));
-                        position--;
-                    }
-                    encyclopedie.set(position, valeur);
-                }
-                for (int k = 0; k < encyclopedie.size(); k++) {
-                    System.out.println(encyclopedie.get(k));
-                    System.out.println("\n");
-                }
+                insertionSort();
                 Stack<CorpsCeleste> stack = new Stack();
                 for (int l = 0; l < encyclopedie.size(); l++) {
                     stack.push(encyclopedie.get(l));
@@ -277,12 +230,6 @@ public class Menu {
                 break;
             case "2":
                 bubbleSort();
-                for (int i = 0; i < encyclopedie.size(); i++) {
-                    if (encyclopedie.get(i) instanceof PlaneteTellurique) {
-                        System.out.println(encyclopedie.get(i));
-                        System.out.println("\n");
-                    }
-                }
                 break;
             case "3":
                 for (int i = 0; i < encyclopedie.size(); i++) {
@@ -518,8 +465,7 @@ public class Menu {
         System.out.println("\nQuel est la temperature maximale?");
         double tempMax = gestionErreurDouble(tempMin, Double.POSITIVE_INFINITY, sc.nextLine());
         double tempMoy = (tempMax - tempMin) / 2;
-        double compatibilite = compatibilite(rayon, gravite, presenceDeVie, atmosphere, tempMin, tempMax, tempMoy);
-        encyclopedie.add(new PlaneteTellurique(nom, rayon, lunesLiees, atmosphere, presenceDeVie, presenceDEau, gravite, tempMin, tempMax, compatibilite));
+        encyclopedie.add(new PlaneteTellurique(nom, rayon, lunesLiees, atmosphere, presenceDeVie, presenceDEau, gravite, tempMin, tempMax));
     }
 
     /**
@@ -909,8 +855,8 @@ public class Menu {
      */
     public void statistique() {
         System.out.println("\n(1) Nombre d'entrees saisies pour chaque type de corps celeste"
-                + "\n(2) Afficher pour chaque etoile leur(s) planete(s) associee(s)"
-                + "\n(3) Afficher pour chaque planete leur(s) lune(s) associee(s)");
+                + "\n(2) Afficher pour chaque etoile le nombre de planètes associées"
+                + "\n(3) Afficher pour chaque planete le nombre de lunes associées");
         String reponse = sc.nextLine();
         switch (reponse) {
             case "1":
@@ -940,15 +886,21 @@ public class Menu {
                 break;
             case "2":
                 for (int i = 0; i < encyclopedie.size(); i++) {
+                    Etoile etoileTemp;
                     if (encyclopedie.get(i) instanceof Etoile) {
-                        System.out.println(encyclopedie.get(i));
+                        System.out.println(encyclopedie.get(i).getNom());
+                        etoileTemp = (Etoile) encyclopedie.get(i);
+                        System.out.println(etoileTemp.nombreDePlaneteLier());
                     }
                 }
                 break;
             case "3":
                 for (int i = 0; i < encyclopedie.size(); i++) {
+                    PlaneteTellurique telluriqueTemp;
                     if (encyclopedie.get(i) instanceof PlaneteTellurique) {
-                        System.out.println(encyclopedie.get(i));
+                        System.out.println(encyclopedie.get(i).getNom());
+                        telluriqueTemp = (PlaneteTellurique) encyclopedie.get(i);
+                        System.out.println(telluriqueTemp.nombreDePlaneteLier());
                     }
                 }
                 break;

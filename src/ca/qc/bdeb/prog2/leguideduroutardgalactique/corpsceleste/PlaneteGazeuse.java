@@ -5,7 +5,6 @@
  */
 package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
 
-import java.io.Serializable;
 
 /**
  * @author Lyssandre Chrzaszcz DA: 1844687
@@ -16,6 +15,14 @@ public class PlaneteGazeuse extends CorpsCeleste {
 
     private boolean atmosphereCompatible, presenceVie, anneau;
 
+    /**
+     * COnstructeur Planete gazeuse
+     * @param nom nom Planete gazeuse
+     * @param rayon rayon Planete gazeuse
+     * @param atmosphereCompatible atmosphereCompatible Planete gazeuse
+     * @param presenceVie presenceVie Planete gazeuse
+     * @param anneau anneau Planete gazeuse
+     */
     public PlaneteGazeuse(String nom, double rayon, boolean atmosphereCompatible, boolean presenceVie, boolean anneau) {
         super(nom, rayon);
         this.atmosphereCompatible = atmosphereCompatible;
@@ -23,18 +30,34 @@ public class PlaneteGazeuse extends CorpsCeleste {
         this.anneau = anneau;
     }
 
+    /**
+     * Setter Presence vie
+     * @param presenceVie presenceVie 
+     */
     public void setPresenceVie(boolean presenceVie) {
         this.presenceVie = presenceVie;
     }
 
+    /**
+     * Setter  atmosphereCompatible 
+     * @param atmosphereCompatible  atmosphereCompatible 
+     */
     public void setAtmosphereCompatible(boolean atmosphereCompatible) {
         this.atmosphereCompatible = atmosphereCompatible;
     }
 
+    /**
+     * Setter anneau
+     * @param anneau anneau
+     */
     public void setAnneau(boolean anneau) {
         this.anneau = anneau;
     }
     
+    /**
+     * To string
+     * @return affichage planete gazeuse
+     */
     @Override
     public String toString() {
         return "\nID: " + id + "\n"

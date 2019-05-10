@@ -18,16 +18,7 @@ public class Main {
         ArrayList<CorpsCeleste> encyclopedie = new ArrayList<>();
         Fichier fichier = new Fichier();
         Menu menu = new Menu(encyclopedie, fichier);
-
+        
         menu.showMenu();
     }
 }
-
-/*
-To do:
-    compatibilité dans l'objet
-    Ordre alphabetique
-    Ordonner les pointages de compatibilité
-    Afficher les lunes & planetes
-    Probleme ID
- */

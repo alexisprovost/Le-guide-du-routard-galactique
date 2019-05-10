@@ -12,6 +12,11 @@ package ca.qc.bdeb.prog2.leguideduroutardgalactique.corpsceleste;
  */
 public class Lune extends CorpsCeleste {
 
+    /**
+     * Constructeur Lune
+     * @param nom nom Lune
+     * @param rayon rayon Lune
+     */
     public Lune(String nom, double rayon) {
         super(nom, rayon);
     }
