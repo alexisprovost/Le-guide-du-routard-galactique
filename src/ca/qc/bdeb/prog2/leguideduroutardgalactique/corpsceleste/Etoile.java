@@ -37,13 +37,6 @@ public class Etoile extends CorpsCeleste {
     public void setPlanetesLier(ArrayList<CorpsCeleste> planetesLier) {
         this.planetesLier = planetesLier;
     }
-    
-    @Override
-    public void affichageObjetLier() {
-        for (int i = 0; i < planetesLier.size(); i++) {
-            System.out.println(planetesLier.get(i));
-        }
-    }
 
     @Override
     public String toString() {

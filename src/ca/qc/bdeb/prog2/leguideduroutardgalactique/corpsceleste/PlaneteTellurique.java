@@ -59,10 +59,6 @@ public class PlaneteTellurique extends CorpsCeleste {
     public void rafraichirTemperatureMoyenne(){
        temperatureMoy = (temperatureMin + temperatureMax)/2; 
     }
-   
-    @Override
-    public void affichageObjetLier() {
-    }
 
     @Override
     public String toString() {
